@@ -29,7 +29,7 @@ export default function LoginForm() {
       <h2 className="font-bold text-2xl mb-3">Sign in</h2>
 
       {/* Form */}
-      <form className="w-[410px]" onSubmit={handleSubmit(onSubmit)}>
+      <form className="w-[500px]" onSubmit={handleSubmit(onSubmit)}>
         {/* Fields */}
         <div className="space-y-3 mb-8">
           {/* Email */}

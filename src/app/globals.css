@@ -76,7 +76,7 @@ body {
     @apply bg-background text-foreground;
   }
   .continue-with {
-    @apply text-[#6C737F]  relative before:absolute before:bg-slate-300 before:h-[1px] before:w-[132px] before:top-1/2 before:-translate-y-1/2 before:right-0 
-    after:absolute after:bg-slate-300 after:h-[1px] after:w-[132px] after:top-1/2 after:-translate-y-1/2 after:left-0;
+    @apply text-[#6C737F]  relative before:absolute before:bg-slate-300 before:h-[1px] before:w-[185px] before:top-1/2 before:-translate-y-1/2 before:right-0 
+    after:absolute after:bg-slate-300 after:h-[1px] after:w-[185px] after:top-1/2 after:-translate-y-1/2 after:left-0;
   }
 }
