@@ -16,6 +16,15 @@ import ContinueWith from '@/components/features/continue/continue-with';
 
 export default function RegisterForm() {
   const form = useForm<RegisterFields>({
+    defaultValues: {
+      username: '',
+      firstName: '',
+      lastName: '',
+      email: '',
+      password: '',
+      rePassword: '',
+      phone: '',
+    },
     resolver: zodResolver(registerSchema),
   });
 
@@ -26,7 +35,7 @@ export default function RegisterForm() {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSumbit)}
-        className="w-[500px] mt-10 space-y-3"
+        className="w-[500px] space-y-3"
       >
         {/* Username */}
         <FormField
@@ -111,52 +120,49 @@ export default function RegisterForm() {
           )}
         />
 
-        {/* Fields Password */}
-        <div className="block md:flex items-center gap-2">
-          {/* Passwrod */}
-          <FormField
-            control={form.control}
-            name="password"
-            render={({ field }) => (
-              <FormItem className="flex-1">
-                {/* Label */}
-                <FormLabel className="sr-only">Password</FormLabel>
+        {/* Passwrod */}
+        <FormField
+          control={form.control}
+          name="password"
+          render={({ field }) => (
+            <FormItem>
+              {/* Label */}
+              <FormLabel className="sr-only">Password</FormLabel>
 
-                {/* Field */}
-                <FormControl>
-                  <Input {...field} type="password" placeholder="password" />
-                </FormControl>
+              {/* Field */}
+              <FormControl>
+                <Input {...field} type="password" placeholder="password" />
+              </FormControl>
 
-                {/* Feedback */}
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+              {/* Feedback */}
+              <FormMessage />
+            </FormItem>
+          )}
+        />
 
-          {/* Confirm Passsword */}
-          <FormField
-            control={form.control}
-            name="rePassword"
-            render={({ field }) => (
-              <FormItem className="flex-1">
-                {/* Label */}
-                <FormLabel className="sr-only">Confirm Passsword</FormLabel>
+        {/* Confirm Passsword */}
+        <FormField
+          control={form.control}
+          name="rePassword"
+          render={({ field }) => (
+            <FormItem>
+              {/* Label */}
+              <FormLabel className="sr-only">Confirm Passsword</FormLabel>
 
-                {/* Field */}
-                <FormControl>
-                  <Input
-                    {...field}
-                    type="password"
-                    placeholder="Confirm Passsword"
-                  />
-                </FormControl>
+              {/* Field */}
+              <FormControl>
+                <Input
+                  {...field}
+                  type="password"
+                  placeholder="Confirm Passsword"
+                />
+              </FormControl>
 
-                {/* Feedback */}
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-        </div>
+              {/* Feedback */}
+              <FormMessage />
+            </FormItem>
+          )}
+        />
 
         {/* Phone */}
         <FormField
@@ -180,6 +186,7 @@ export default function RegisterForm() {
 
         {/* Submit */}
         <Button
+          disabled={form.formState.isSubmitted && !form.formState.isValid}
           type="submit"
           className="bg-hiro w-full h-14 shadow-primary-shadow rounded-[20px] mb-8 hover:bg-hiro/90"
         >
