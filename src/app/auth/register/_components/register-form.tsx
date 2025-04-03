@@ -13,6 +13,8 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import ContinueWith from '@/components/features/continue/continue-with';
+import { registerAction } from '../_actions/register.action';
+import Link from 'next/link';
 
 export default function RegisterForm() {
   const form = useForm<RegisterFields>({
@@ -28,8 +30,8 @@ export default function RegisterForm() {
     resolver: zodResolver(registerSchema),
   });
 
-  const onSumbit: SubmitHandler<RegisterFields> = (values) => {
-    console.log(values);
+  const onSumbit: SubmitHandler<RegisterFields> = async (values) => {
+    await registerAction(values);
   };
   return (
     <Form {...form}>
@@ -48,7 +50,7 @@ export default function RegisterForm() {
 
               {/*Field  */}
               <FormControl>
-                <Input type="text" placeholder="Username" {...field} />
+                <Input {...field} type="text" placeholder="Username" />
               </FormControl>
 
               {/* FeedBack */}
@@ -183,6 +185,14 @@ export default function RegisterForm() {
             </FormItem>
           )}
         />
+
+        {/* Link recover */}
+        <p className="text-base text-center font-medium">
+          Already have an account?
+          <Link className="ml-1 text-hiro" href={'/auth/forgot-password'}>
+            Login
+          </Link>
+        </p>
 
         {/* Submit */}
         <Button

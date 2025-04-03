@@ -2,7 +2,6 @@
 import { Input } from '@/components/ui/input';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { LoginFields, loginSchema } from '@/lib/schemes/auth.schemes';
 import {
   Form,
   FormControl,
@@ -13,28 +12,28 @@ import {
 } from '@/components/ui/form';
 import { Button } from '@/components/ui/button';
 import ContinueWith from '@/components/features/continue/continue-with';
-import Link from 'next/link';
+import {
+  ForgotPasswordFields,
+  forgotPasswordSchema,
+} from '@/lib/schemes/auth.schemes';
 
-export default function LoginForm() {
-  //Form
-  const form = useForm<LoginFields>({
+export default function ForgotPassword() {
+  const form = useForm<ForgotPasswordFields>({
     defaultValues: {
       email: '',
-      password: '',
     },
-    resolver: zodResolver(loginSchema),
+    resolver: zodResolver(forgotPasswordSchema),
   });
 
   //Functions
-  const onSubmit: SubmitHandler<LoginFields> = (values) => {
+  const onSubmit: SubmitHandler<ForgotPasswordFields> = (values) => {
     console.log(values);
   };
-
   return (
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="w-[500px] space-y-3"
+        className="w-[500px] space-y-5"
       >
         {/* Email */}
         <FormField
@@ -56,41 +55,13 @@ export default function LoginForm() {
           )}
         />
 
-        {/* Password */}
-        <FormField
-          control={form.control}
-          name="password"
-          render={({ field }) => (
-            <FormItem>
-              {/* Label */}
-              <FormLabel className="sr-only">Password</FormLabel>
-
-              {/* Field */}
-              <FormControl>
-                <Input {...field} type="password" placeholder="Password" />
-              </FormControl>
-
-              {/* Feedback */}
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        {/* Link recover */}
-        <Link
-          className="text-base text-end block text-hiro"
-          href={'/auth/forgot-password'}
-        >
-          Recover Password ?
-        </Link>
-
         {/* Submit */}
         <Button
           disabled={form.formState.isSubmitted && !form.formState.isValid}
           type="submit"
           className="bg-hiro w-full h-14 shadow-primary-shadow rounded-[20px] mb-8 hover:bg-hiro/90"
         >
-          Create Account
+          Send
         </Button>
 
         {/* Contuinue with */}
