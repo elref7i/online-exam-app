@@ -16,19 +16,20 @@ import {
 } from '@/components/ui/form';
 import { Button } from '@/components/ui/button';
 import ContinueWith from '@/components/features/continue/continue-with';
+import { setPasswordAction } from '../_actions/set-password.action';
 
 export default function SetPasswordForm() {
   const form = useForm<SetPassswordFields>({
     defaultValues: {
-      password: '',
-      rePassword: '',
+      email: '',
+      newPassword: '',
     },
     resolver: zodResolver(setPassworsSchema),
   });
 
   //Functions
-  const onSubmit: SubmitHandler<SetPassswordFields> = (values) => {
-    console.log(values);
+  const onSubmit: SubmitHandler<SetPassswordFields> = async (values) => {
+    await setPasswordAction(values);
   };
   return (
     <Form {...form}>
@@ -36,18 +37,18 @@ export default function SetPasswordForm() {
         onSubmit={form.handleSubmit(onSubmit)}
         className="w-[500px] space-y-3"
       >
-        {/* Password */}
+        {/* email */}
         <FormField
           control={form.control}
-          name="password"
+          name="email"
           render={({ field }) => (
             <FormItem>
               {/* Label */}
-              <FormLabel className="sr-only">Password</FormLabel>
+              <FormLabel className="sr-only">Email</FormLabel>
 
               {/* Field */}
               <FormControl>
-                <Input {...field} type="password" placeholder="Password" />
+                <Input {...field} type="email" placeholder="Enter Email" />
               </FormControl>
 
               {/* Feedback */}
@@ -59,18 +60,18 @@ export default function SetPasswordForm() {
         {/* Confirm Password */}
         <FormField
           control={form.control}
-          name="password"
+          name="newPassword"
           render={({ field }) => (
             <FormItem>
               {/* Label */}
-              <FormLabel className="sr-only">Confirm Password</FormLabel>
+              <FormLabel className="sr-only">New Password</FormLabel>
 
               {/* Field */}
               <FormControl>
                 <Input
                   {...field}
                   type="password"
-                  placeholder="Re-enter Password"
+                  placeholder="Enter new password"
                 />
               </FormControl>
 

@@ -6,7 +6,7 @@ export const loginSchema = z.object({
   email: z
     .string({ required_error: 'Please enter your email' })
     .min(1, 'Please enter your email')
-    .email('Please provide a vaild email address'),
+    .email('Please provide a valid email address'),
   password: z
     .string({ required_error: 'Please enter your password' })
     .min(1, 'Please enter your password'),
@@ -21,7 +21,7 @@ export const registerSchema = z
       .string({ required_error: 'Username is required' })
       .min(1, 'Username is required')
       .min(2, 'Username canont be less than 2 characters')
-      .max(10, 'Username canont exceed 10 characters'),
+      .max(10, 'Username cannot exceed 10 characters'),
     firstName: z
       .string({ required_error: 'First Name is required' })
       .min(1, 'First Name is required')
@@ -69,33 +69,29 @@ export const forgotPasswordSchema = z.object({
 export type ForgotPasswordFields = z.infer<typeof forgotPasswordSchema>;
 
 // Set password schema
-export const setPassworsSchema = z
-  .object({
-    password: z
-      .string({ required_error: 'Password is required' })
-      .min(1, 'Password is required')
-      .regex(
-        /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-        'Password must be at least 8 characters long and  (@$!%*?&).'
-      ),
-    rePassword: z
-      .string({ required_error: 'Re-enter your password' })
-      .min(1, 'Re-enter your password'),
-  })
-  .refine((values) => values.password === values.rePassword, {
-    message: 'Password do not match',
-    path: ['rePassword'],
-  });
+export const setPassworsSchema = z.object({
+  email: z
+    .string({ required_error: 'Email is required' })
+    .min(1, 'Email is required')
+    .email('Please provide a vaild email address'),
+  newPassword: z
+    .string({ required_error: 'Password is required' })
+    .min(1, 'Password is required')
+    .regex(
+      /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+      'Password must be at least 8 characters long and  (@$!%*?&).'
+    ),
+});
 
 export type SetPassswordFields = z.infer<typeof setPassworsSchema>;
 
 // Forgot password schema
-export const verfiySchema = z.object({
+export const verifySchema = z.object({
   resetCode: z
     .string({ required_error: 'Code is required' })
     .min(1, 'Code is required')
-    .min(2, 'he code requires 6 digits')
+    .min(2, 'the code requires 6 digits')
     .max(6, 'Code is not correct'),
 });
 
-export type VerifyFields = z.infer<typeof verfiySchema>;
+export type VerifyFields = z.infer<typeof verifySchema>;

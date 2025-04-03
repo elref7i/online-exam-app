@@ -1,4 +1,4 @@
-declare type SuccessfullResponse<T> = {
+declare type SuccessfulResponse<T> = {
   message: 'success';
 } & T;
 
@@ -7,4 +7,10 @@ declare type ErrorResponse = {
   code: number;
 };
 
-declare type APIResponse<T> = SuccessfullResponse<T> | ErrorResponse;
+declare type SuccessfulCodeResponse = {
+  status: 'Success';
+};
+
+declare type APIResponse<T> = SuccessfulResponse<T> | ErrorResponse;
+
+declare type CodeResponse = SuccessfulCodeResponse | ErrorResponse;

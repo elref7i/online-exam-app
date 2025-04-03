@@ -12,19 +12,20 @@ import {
 } from '@/components/ui/form';
 import { Button } from '@/components/ui/button';
 import ContinueWith from '@/components/features/continue/continue-with';
-import { verfiySchema, VerifyFields } from '@/lib/schemes/auth.schemes';
+import { verifySchema, VerifyFields } from '@/lib/schemes/auth.schemes';
+import { verifyAction } from '../_actions/verify-code.action';
 
 export default function VerifyCodeForm() {
   const form = useForm<VerifyFields>({
     defaultValues: {
       resetCode: '',
     },
-    resolver: zodResolver(verfiySchema),
+    resolver: zodResolver(verifySchema),
   });
 
   //Functions
-  const onSubmit: SubmitHandler<VerifyFields> = (values) => {
-    console.log(values);
+  const onSubmit: SubmitHandler<VerifyFields> = async (values) => {
+    await verifyAction(values);
   };
   return (
     <Form {...form}>
@@ -61,7 +62,7 @@ export default function VerifyCodeForm() {
           Send
         </Button>
 
-        {/* Contuinue with */}
+        {/* Continue with */}
         <ContinueWith />
       </form>
     </Form>

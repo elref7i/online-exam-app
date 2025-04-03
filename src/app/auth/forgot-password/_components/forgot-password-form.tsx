@@ -16,6 +16,7 @@ import {
   ForgotPasswordFields,
   forgotPasswordSchema,
 } from '@/lib/schemes/auth.schemes';
+import { forgotPasswordAction } from '../_actions/forgot-pass.action';
 
 export default function ForgotPassword() {
   const form = useForm<ForgotPasswordFields>({
@@ -26,8 +27,8 @@ export default function ForgotPassword() {
   });
 
   //Functions
-  const onSubmit: SubmitHandler<ForgotPasswordFields> = (values) => {
-    console.log(values);
+  const onSubmit: SubmitHandler<ForgotPasswordFields> = async (values) => {
+    await forgotPasswordAction(values);
   };
   return (
     <Form {...form}>
