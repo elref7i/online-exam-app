@@ -17,6 +17,7 @@ import { registerAction } from '../_actions/register.action';
 import Link from 'next/link';
 
 export default function RegisterForm() {
+  // Form
   const form = useForm<RegisterFields>({
     defaultValues: {
       username: '',
@@ -30,6 +31,7 @@ export default function RegisterForm() {
     resolver: zodResolver(registerSchema),
   });
 
+  // Functions
   const onSumbit: SubmitHandler<RegisterFields> = async (values) => {
     await registerAction(values);
   };
