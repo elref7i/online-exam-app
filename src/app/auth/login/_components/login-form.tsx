@@ -16,7 +16,6 @@ import ContinueWith from '@/components/features/continue/continue-with';
 import Link from 'next/link';
 import { signIn } from 'next-auth/react';
 import { toast } from 'sonner';
-import { redirect } from 'next/dist/server/api-utils';
 
 export default function LoginForm() {
   //Form
@@ -108,10 +107,10 @@ export default function LoginForm() {
           type="submit"
           className="bg-hiro w-full h-14 shadow-primary-shadow rounded-[20px] mb-8 hover:bg-hiro/90"
         >
-          Create Account
+          Sign In
         </Button>
 
-        {/* Contuinue with */}
+        {/* Continue with */}
         <ContinueWith />
       </form>
     </Form>
