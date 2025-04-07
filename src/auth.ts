@@ -33,6 +33,7 @@ export const authOptions: NextAuthOptions = {
         const payload: APIResponse<LoginResponse> = await response.json();
 
         console.log(payload);
+
         if ('code' in payload) {
           throw new Error(payload.message);
         }
@@ -50,7 +51,6 @@ export const authOptions: NextAuthOptions = {
   ],
   callbacks: {
     jwt: ({ token, user, profile }) => {
-      console.log(profile);
       if (profile) {
         token.user = {
           firstName: profile.given_name,

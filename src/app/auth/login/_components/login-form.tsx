@@ -14,6 +14,9 @@ import {
 import { Button } from '@/components/ui/button';
 import ContinueWith from '@/components/features/continue/continue-with';
 import Link from 'next/link';
+import { signIn } from 'next-auth/react';
+import { toast } from 'sonner';
+import { redirect } from 'next/dist/server/api-utils';
 
 export default function LoginForm() {
   //Form
@@ -26,8 +29,23 @@ export default function LoginForm() {
   });
 
   //Functions
-  const onSubmit: SubmitHandler<LoginFields> = (values) => {
-    console.log(values);
+  const onSubmit: SubmitHandler<LoginFields> = async (values) => {
+    const response = await signIn('credentials', {
+      callbackUrl: '/',
+      redirect: false,
+      email: values.email,
+      password: values.password,
+    });
+    if (response?.ok) {
+      //عشان Session تتحدث in sever and client side
+      setTimeout(() => {
+        window.location.href = response.url || '/';
+      }, 2000);
+      toast.success(response.status);
+      return;
+    }
+    toast.error(response?.error);
+    console.error(response?.error);
   };
 
   return (

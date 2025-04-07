@@ -1,6 +1,8 @@
 import LeftAuth from '@/components/layout/left-auth';
 import HeaderAuth from '@/components/layout/nav-auth';
 import { ReactNode } from 'react';
+import { Toaster } from 'sonner';
+// import { Toaster } from 'sonner';
 
 export default function LayoutAuth({ children }: { children: ReactNode }) {
   return (
@@ -14,6 +16,8 @@ export default function LayoutAuth({ children }: { children: ReactNode }) {
 
         {/* Form */}
         {children}
+
+        <Toaster />
       </section>
     </main>
   );
