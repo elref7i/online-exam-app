@@ -50,6 +50,10 @@ export const authOptions: NextAuthOptions = {
     }),
   ],
   callbacks: {
+    // Cookie لما تنحج عملية تسجيل الدخول بياخد البيانات يشفرها ويحفظها فى
+    //token => اللى بحط فيها الداتا فى الكوكى واحتجها بعدين
+    //user => الداتا اللى راجعه من الباك
+    //profile => معلوماتك فى جوجل او اى حاجه مسجل بيها Oauth
     jwt: ({ token, user, profile }) => {
       if (profile) {
         token.user = {
@@ -69,7 +73,7 @@ export const authOptions: NextAuthOptions = {
       return token;
     },
     session: ({ session, token }) => {
-      //* token => لما يتفك التشفير
+      // token => لما يتفك التشفير
       session.user = token.user;
 
       return session;
