@@ -4,6 +4,10 @@ import { LayoutProps } from '@/lib/types/common';
 import { hasLocale } from 'next-intl';
 import { notFound } from 'next/navigation';
 
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
+
 export default function LocaleLayout({
   children,
   params: { locale },

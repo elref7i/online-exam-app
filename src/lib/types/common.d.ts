@@ -10,3 +10,8 @@ declare type RouteProps = {
 declare type LayoutProps = {
   children: ReactNode;
 } & Pick<RouteProps, 'params'>;
+
+declare type ErrorProps = {
+  error: Error & { digest?: string };
+  reset: () => void;
+};
