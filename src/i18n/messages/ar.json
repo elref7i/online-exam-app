@@ -1,1 +1,8 @@
-{ "hello": "مرحبا" }
+{
+  "hello": "مرحبا",
+  "welcome-user": "مرحبا, {user}!",
+  "cart-product": "{count, plural, =0 {لا توجد منتجات في سلة التسوق} =1 {منتج واحد في سلة التسوق} =2 {منتجان في سلة التسوق} few {# منتجات في سلة التسوق} many {# منتجًا في سلة التسوق} other {# منتج في سلة التسوق}}\n",
+  "user-comments": "{user} {gender, select, female {علقت} other {علق}} على منشورك",
+  "product-price": "سعر المنتج : <span>{price} دولار</span>",
+  "error-message": "<br>عذرا</br> حدث خطأ ما"
+}

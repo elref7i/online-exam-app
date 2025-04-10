@@ -1,1 +1,8 @@
-{ "hello": "Hello" }
+{
+  "hello": "Hello",
+  "welcome-user": "Welcome, {user}!",
+  "cart-product": "You have {count, plural, =0 {# products} =1 {# product} other {# products}} products in your cart.",
+  "user-comments": "{user} has commented on your post",
+  "product-price": "Product Price is : <span>{price} dollars</span>",
+  "error-message": "<br>Oops</br> Somthing went Wrong"
+}
