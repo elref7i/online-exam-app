@@ -4,5 +4,15 @@
   "cart-product": "You have {count, plural, =0 {# products} =1 {# product} other {# products}} products in your cart.",
   "user-comments": "{user} has commented on your post",
   "product-price": "Product Price is : <span>{price} dollars</span>",
-  "error-message": "<br>Oops</br> Somthing went Wrong"
+  "error-message": "<br>Oops</br> Somthing went Wrong",
+  "price-in-msg": "Product price is {price, number, currency-base}",
+  "rate-percent": "Success  rate is {rate,number,percentage-base}",
+  "sign-in": "Sign in",
+  "email": "Email",
+  "password": "Password",
+  "recover-password": "Recover Password ?",
+  "continue-with": "Or Continue with",
+  "register": "Register",
+  "welcome-message": "Get ready to test your skills and discover your true abilities through interactive and smart exams .",
+  "welcomw-elevate": "Welcome to <span>ELevate</span>"
 }

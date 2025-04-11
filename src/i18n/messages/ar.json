@@ -4,5 +4,15 @@
   "cart-product": "{count, plural, =0 {لا توجد منتجات في سلة التسوق} =1 {منتج واحد في سلة التسوق} =2 {منتجان في سلة التسوق} few {# منتجات في سلة التسوق} many {# منتجًا في سلة التسوق} other {# منتج في سلة التسوق}}\n",
   "user-comments": "{user} {gender, select, female {علقت} other {علق}} على منشورك",
   "product-price": "سعر المنتج : <span>{price} دولار</span>",
-  "error-message": "<br>عذرا</br> حدث خطأ ما"
+  "error-message": "<br>عذرا</br> حدث خطأ ما",
+  "price-in-msg": "سعر المنتج هو {price, number, currency-base}",
+  "rate-percent": "معدل النجاح هو {rate,number,percentage-base}",
+  "sign-in": "تسجيل الدخول",
+  "email": "بريد إلكتروني",
+  "password": "كلمة المرور",
+  "recover-password": "استعادة كلمة المرور؟",
+  "continue-with": "أو متابعة",
+  "register": "انشاء حساب",
+  "welcome-message": "استعد لاختبار مهاراتك واكتشاف قدراتك الحقيقية من خلال الامتحانات التفاعلية والذكية.",
+  "welcomw-elevate": "مرحبًا بك في <span> elevate </span>"
 }

@@ -1,8 +1,8 @@
-'use client';
-import { Input } from '@/components/ui/input';
-import { SubmitHandler, useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { LoginFields, loginSchema } from '@/lib/schemes/auth.schemes';
+"use client";
+import { Input } from "@/components/ui/input";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { LoginFields, loginSchema } from "@/lib/schemes/auth.schemes";
 import {
   Form,
   FormControl,
@@ -10,27 +10,32 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@/components/ui/form';
-import { Button } from '@/components/ui/button';
-import ContinueWith from '@/components/features/continue/continue-with';
-import Link from 'next/link';
-import { signIn } from 'next-auth/react';
-import { toast } from 'sonner';
+} from "@/components/ui/form";
+import { Button } from "@/components/ui/button";
+import ContinueWith from "@/components/features/continue/continue-with";
+import Link from "next/link";
+import { signIn } from "next-auth/react";
+import { toast } from "sonner";
+import { useTranslations } from "next-intl";
+import { LocaleType } from "@/lib/types/common";
 
-export default function LoginForm() {
+export default function LoginForm({ locale }: LocaleType) {
+  //Translations
+  const t = useTranslations();
+
   //Form
   const form = useForm<LoginFields>({
     defaultValues: {
-      email: '',
-      password: '',
+      email: "",
+      password: "",
     },
     resolver: zodResolver(loginSchema),
   });
 
   //Functions
   const onSubmit: SubmitHandler<LoginFields> = async (values) => {
-    const response = await signIn('credentials', {
-      callbackUrl: '/',
+    const response = await signIn("credentials", {
+      callbackUrl: "/",
       redirect: false,
       email: values.email,
       password: values.password,
@@ -38,7 +43,7 @@ export default function LoginForm() {
     if (response?.ok) {
       //عشان Session تتحدث in sever and client side
       setTimeout(() => {
-        window.location.href = response.url || '/';
+        window.location.href = response.url || "/";
       }, 2000);
       toast.success(response.status);
       return;
@@ -60,11 +65,15 @@ export default function LoginForm() {
           render={({ field }) => (
             <FormItem>
               {/* Label */}
-              <FormLabel className="sr-only">Email</FormLabel>
+              <FormLabel className="sr-only">{t("email")}</FormLabel>
 
               {/* Field */}
               <FormControl>
-                <Input {...field} type="email" placeholder="Email" />
+                <Input
+                  {...field}
+                  type="email"
+                  placeholder={t("email")}
+                />
               </FormControl>
 
               {/* Feedback */}
@@ -80,11 +89,15 @@ export default function LoginForm() {
           render={({ field }) => (
             <FormItem>
               {/* Label */}
-              <FormLabel className="sr-only">Password</FormLabel>
+              <FormLabel className="sr-only">{t("password")}</FormLabel>
 
               {/* Field */}
               <FormControl>
-                <Input {...field} type="password" placeholder="Password" />
+                <Input
+                  {...field}
+                  type="password"
+                  placeholder={t("password")}
+                />
               </FormControl>
 
               {/* Feedback */}
@@ -95,10 +108,12 @@ export default function LoginForm() {
 
         {/* Link recover */}
         <Link
-          className="text-base text-end block text-hiro"
-          href={'/auth/forgot-password'}
+          className={`text-base ${
+            locale === "ar" ? `text-start` : `text-end`
+          } block text-hiro`}
+          href={"/auth/forgot-password"}
         >
-          Recover Password ?
+          {t("recover-password")}
         </Link>
 
         {/* Submit */}
@@ -107,7 +122,7 @@ export default function LoginForm() {
           type="submit"
           className="bg-hiro w-full h-14 shadow-primary-shadow rounded-[20px] mb-8 hover:bg-hiro/90"
         >
-          Sign In
+          {t("sign-in")}
         </Button>
 
         {/* Continue with */}

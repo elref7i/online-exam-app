@@ -1,15 +1,20 @@
-import { Locale } from 'next-intl';
-import { ReactNode } from 'react';
+import { Locale } from "next-intl";
+import { ReactNode } from "react";
 
 declare type SearchParams = string | string[] | undefined;
 
+declare type LocaleType = {
+  locale: Locale;
+};
+
 declare type RouteProps = {
-  params: { locale: Locale };
+  params: LocaleType;
   searchParams: SearchParams;
 };
+
 declare type LayoutProps = {
   children: ReactNode;
-} & Pick<RouteProps, 'params'>;
+} & Pick<RouteProps, "params">;
 
 declare type ErrorProps = {
   error: Error & { digest?: string };

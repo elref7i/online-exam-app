@@ -1,23 +1,22 @@
-import LeftAuth from '@/components/layout/left-auth';
-import HeaderAuth from '@/components/layout/nav-auth';
-import { ReactNode } from 'react';
-import { Toaster } from 'sonner';
-// import { Toaster } from 'sonner';
+import LeftAuth from "@/components/layout/left-auth";
+import HeaderAuth from "@/components/layout/nav-auth";
+import { LayoutProps } from "@/lib/types/common";
 
-export default function LayoutAuth({ children }: { children: ReactNode }) {
+export default function LayoutAuth({
+  children,
+  params: { locale },
+}: LayoutProps) {
   return (
     <main className="flex min-h-screen max-h-screen items-center h-screen gap-32">
       {/* Left Section */}
-      <LeftAuth />
+      <LeftAuth locale={locale} />
 
       <section className="auth-action">
         {/* Header */}
-        <HeaderAuth />
+        <HeaderAuth locale={locale} />
 
         {/* Form */}
         {children}
-
-        <Toaster />
       </section>
     </main>
   );

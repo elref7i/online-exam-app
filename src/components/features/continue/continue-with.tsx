@@ -1,11 +1,12 @@
-'use client';
-import IconSocial from '@/components/common/icon-social';
-import { Button } from '@/components/ui/button';
-import { signIn } from 'next-auth/react';
-import { FaFacebook } from 'react-icons/fa';
-import { FaTwitter } from 'react-icons/fa';
-import { FaApple } from 'react-icons/fa6';
-import { FcGoogle } from 'react-icons/fc';
+"use client";
+import IconSocial from "@/components/common/icon-social";
+import { Button } from "@/components/ui/button";
+import { signIn } from "next-auth/react";
+import { useTranslations } from "next-intl";
+import { FaFacebook } from "react-icons/fa";
+import { FaTwitter } from "react-icons/fa";
+import { FaApple } from "react-icons/fa6";
+import { FcGoogle } from "react-icons/fc";
 
 /**
  * A functional component that displays social media icons for alternative authentication options.
@@ -20,10 +21,13 @@ import { FcGoogle } from 'react-icons/fc';
  */
 
 export default function ContinueWith() {
+  //Translations
+  const t = useTranslations();
+
   return (
     <section className="or-continue text-center">
       {/* Title */}
-      <p className="continue-with mb-6">Or Continue with</p>
+      <p className="continue-with mb-6">{t("continue-with")}</p>
       {/* Icons */}
       <ul className="flex justify-center items-center gap-8">
         {/* Icon Google */}
@@ -31,8 +35,8 @@ export default function ContinueWith() {
           <Button
             type="button"
             onClick={() => {
-              signIn('google', {
-                callbackUrl: 'http://localhost:3000/home',
+              signIn("google", {
+                callbackUrl: "http://localhost:3000/home",
               });
             }}
             className="text-2xl"
