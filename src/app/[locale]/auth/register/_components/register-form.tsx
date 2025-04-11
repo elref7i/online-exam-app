@@ -1,5 +1,5 @@
-'use client';
-import { SubmitHandler, useForm } from 'react-hook-form';
+"use client";
+import { SubmitHandler, useForm } from "react-hook-form";
 import {
   Form,
   FormControl,
@@ -7,26 +7,31 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@/components/ui/form';
-import { RegisterFields, registerSchema } from '@/lib/schemes/auth.schemes';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
-import ContinueWith from '@/components/features/continue/continue-with';
-import { registerAction } from '../_actions/register.action';
-import Link from 'next/link';
+} from "@/components/ui/form";
+import { RegisterFields, registerSchema } from "@/lib/schemes/auth.schemes";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import ContinueWith from "@/components/features/continue/continue-with";
+import { registerAction } from "../_actions/register.action";
+import Link from "next/link";
+import { useLocale, useTranslations } from "next-intl";
 
 export default function RegisterForm() {
+  //Translations
+  const t = useTranslations();
+  const locale = useLocale();
+
   // Form
   const form = useForm<RegisterFields>({
     defaultValues: {
-      username: '',
-      firstName: '',
-      lastName: '',
-      email: '',
-      password: '',
-      rePassword: '',
-      phone: '',
+      username: "",
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: "",
+      rePassword: "",
+      phone: "",
     },
     resolver: zodResolver(registerSchema),
   });
@@ -48,11 +53,15 @@ export default function RegisterForm() {
           render={({ field }) => (
             <FormItem>
               {/* Label */}
-              <FormLabel className="sr-only">User Name</FormLabel>
+              <FormLabel className="sr-only">{t("user-name")}</FormLabel>
 
               {/*Field  */}
               <FormControl>
-                <Input {...field} type="text" placeholder="Username" />
+                <Input
+                  {...field}
+                  type="text"
+                  placeholder={t("user-name")}
+                />
               </FormControl>
 
               {/* FeedBack */}
@@ -70,11 +79,15 @@ export default function RegisterForm() {
             render={({ field }) => (
               <FormItem className="flex-1">
                 {/* Label */}
-                <FormLabel className="sr-only">Frist Name</FormLabel>
+                <FormLabel className="sr-only">{t("first-name")}</FormLabel>
 
                 {/* Field */}
                 <FormControl>
-                  <Input {...field} type="text" placeholder="First Name" />
+                  <Input
+                    {...field}
+                    type="text"
+                    placeholder={t("first-name")}
+                  />
                 </FormControl>
 
                 {/* Feedback */}
@@ -90,11 +103,15 @@ export default function RegisterForm() {
             render={({ field }) => (
               <FormItem className="flex-1">
                 {/* Label */}
-                <FormLabel className="sr-only">Last Name</FormLabel>
+                <FormLabel className="sr-only">{t("last-name")}</FormLabel>
 
                 {/* Field */}
                 <FormControl>
-                  <Input {...field} type="text" placeholder="Last Name" />
+                  <Input
+                    {...field}
+                    type="text"
+                    placeholder={t("last-name")}
+                  />
                 </FormControl>
 
                 {/* Feedback */}
@@ -111,11 +128,15 @@ export default function RegisterForm() {
           render={({ field }) => (
             <FormItem>
               {/* Label */}
-              <FormLabel className="sr-only">Email</FormLabel>
+              <FormLabel className="sr-only">{t("email")}</FormLabel>
 
               {/* Field */}
               <FormControl>
-                <Input {...field} type="email" placeholder="Email" />
+                <Input
+                  {...field}
+                  type="email"
+                  placeholder={t("email")}
+                />
               </FormControl>
 
               {/* Feedback */}
@@ -131,11 +152,15 @@ export default function RegisterForm() {
           render={({ field }) => (
             <FormItem>
               {/* Label */}
-              <FormLabel className="sr-only">Password</FormLabel>
+              <FormLabel className="sr-only">{t("password")}</FormLabel>
 
               {/* Field */}
               <FormControl>
-                <Input {...field} type="password" placeholder="password" />
+                <Input
+                  {...field}
+                  type="password"
+                  placeholder={t("password")}
+                />
               </FormControl>
 
               {/* Feedback */}
@@ -151,14 +176,16 @@ export default function RegisterForm() {
           render={({ field }) => (
             <FormItem>
               {/* Label */}
-              <FormLabel className="sr-only">Confirm Passsword</FormLabel>
+              <FormLabel className="sr-only">
+                {t("confirm-passsword")}
+              </FormLabel>
 
               {/* Field */}
               <FormControl>
                 <Input
                   {...field}
                   type="password"
-                  placeholder="Confirm Passsword"
+                  placeholder={t("confirm-passsword")}
                 />
               </FormControl>
 
@@ -175,11 +202,16 @@ export default function RegisterForm() {
           render={({ field }) => (
             <FormItem>
               {/* Label */}
-              <FormLabel className="sr-only">Phone</FormLabel>
+              <FormLabel className="sr-only">{t("phone")}</FormLabel>
 
               {/* Field */}
               <FormControl>
-                <Input {...field} type="tel" placeholder="Phone" />
+                <Input
+                  {...field}
+                  type="tel"
+                  className={`${locale === "ar" ? "text-end" : "text-start"}`}
+                  placeholder={t("phone")}
+                />
               </FormControl>
 
               {/* Feedback */}
@@ -190,10 +222,16 @@ export default function RegisterForm() {
 
         {/* Link recover */}
         <p className="text-base text-center font-medium">
-          Already have an account?
-          <Link className="ml-1 text-hiro" href={'/auth/forgot-password'}>
-            Login
-          </Link>
+          {t.rich("already-account", {
+            Link: (value) => (
+              <Link
+                className="text-hiro ml-1"
+                href={"/auth/login"}
+              >
+                {value}
+              </Link>
+            ),
+          })}
         </p>
 
         {/* Submit */}

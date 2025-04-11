@@ -16,12 +16,12 @@ import ContinueWith from "@/components/features/continue/continue-with";
 import Link from "next/link";
 import { signIn } from "next-auth/react";
 import { toast } from "sonner";
-import { useTranslations } from "next-intl";
-import { LocaleType } from "@/lib/types/common";
+import { useLocale, useTranslations } from "next-intl";
 
-export default function LoginForm({ locale }: LocaleType) {
+export default function LoginForm() {
   //Translations
   const t = useTranslations();
+  const locale = useLocale();
 
   //Form
   const form = useForm<LoginFields>({

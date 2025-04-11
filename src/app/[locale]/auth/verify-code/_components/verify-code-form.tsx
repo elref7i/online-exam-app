@@ -1,7 +1,7 @@
-'use client';
-import { Input } from '@/components/ui/input';
-import { SubmitHandler, useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
+"use client";
+import { Input } from "@/components/ui/input";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Form,
   FormControl,
@@ -9,16 +9,21 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@/components/ui/form';
-import { Button } from '@/components/ui/button';
-import ContinueWith from '@/components/features/continue/continue-with';
-import { verifySchema, VerifyFields } from '@/lib/schemes/auth.schemes';
-import { verifyAction } from '../_actions/verify-code.action';
+} from "@/components/ui/form";
+import { Button } from "@/components/ui/button";
+import ContinueWith from "@/components/features/continue/continue-with";
+import { verifySchema, VerifyFields } from "@/lib/schemes/auth.schemes";
+import { verifyAction } from "../_actions/verify-code.action";
+import { useTranslations } from "next-intl";
 
 export default function VerifyCodeForm() {
+  //Translations
+  const t = useTranslations();
+
+  // Form
   const form = useForm<VerifyFields>({
     defaultValues: {
-      resetCode: '',
+      resetCode: "",
     },
     resolver: zodResolver(verifySchema),
   });
@@ -40,11 +45,15 @@ export default function VerifyCodeForm() {
           render={({ field }) => (
             <FormItem>
               {/* Label */}
-              <FormLabel className="sr-only">Enter Code</FormLabel>
+              <FormLabel className="sr-only">{t("enter-code")}</FormLabel>
 
               {/* Field */}
               <FormControl>
-                <Input {...field} type="text" placeholder="Enter Code" />
+                <Input
+                  {...field}
+                  type="text"
+                  placeholder={t("enter-code")}
+                />
               </FormControl>
 
               {/* Feedback */}
@@ -59,7 +68,7 @@ export default function VerifyCodeForm() {
           type="submit"
           className="bg-hiro w-full h-14 shadow-primary-shadow rounded-[20px] mb-8 hover:bg-hiro/90"
         >
-          Send
+          {t("send")}
         </Button>
 
         {/* Continue with */}

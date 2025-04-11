@@ -1,7 +1,7 @@
-'use client';
-import { Input } from '@/components/ui/input';
-import { SubmitHandler, useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
+"use client";
+import { Input } from "@/components/ui/input";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Form,
   FormControl,
@@ -9,19 +9,24 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@/components/ui/form';
-import { Button } from '@/components/ui/button';
-import ContinueWith from '@/components/features/continue/continue-with';
+} from "@/components/ui/form";
+import { Button } from "@/components/ui/button";
+import ContinueWith from "@/components/features/continue/continue-with";
 import {
   ForgotPasswordFields,
   forgotPasswordSchema,
-} from '@/lib/schemes/auth.schemes';
-import { forgotPasswordAction } from '../_actions/forgot-pass.action';
+} from "@/lib/schemes/auth.schemes";
+import { forgotPasswordAction } from "../_actions/forgot-pass.action";
+import { useTranslations } from "next-intl";
 
 export default function ForgotPassword() {
+  // Translations
+  const t = useTranslations();
+
+  // Form
   const form = useForm<ForgotPasswordFields>({
     defaultValues: {
-      email: '',
+      email: "",
     },
     resolver: zodResolver(forgotPasswordSchema),
   });
@@ -43,11 +48,15 @@ export default function ForgotPassword() {
           render={({ field }) => (
             <FormItem>
               {/* Label */}
-              <FormLabel className="sr-only">Email</FormLabel>
+              <FormLabel className="sr-only">{t("email")}</FormLabel>
 
               {/* Field */}
               <FormControl>
-                <Input {...field} type="email" placeholder="Email" />
+                <Input
+                  {...field}
+                  type="email"
+                  placeholder={t("email")}
+                />
               </FormControl>
 
               {/* Feedback */}
@@ -62,7 +71,7 @@ export default function ForgotPassword() {
           type="submit"
           className="bg-hiro w-full h-14 shadow-primary-shadow rounded-[20px] mb-8 hover:bg-hiro/90"
         >
-          Send
+          {t("send")}
         </Button>
 
         {/* Contuinue with */}

@@ -6,7 +6,8 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/select';
+} from "@/components/ui/select";
+import { useTranslations } from "next-intl";
 
 /**
  * A functional component that provides a language selection dropdown.
@@ -21,16 +22,19 @@ import {
  */
 
 export default function SelectLanguage() {
+  //Translations
+  const t = useTranslations();
+
   return (
     <Select>
       <SelectTrigger className="w-fit">
-        <SelectValue placeholder="English" />
+        <SelectValue placeholder={t("english")} />
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
-          <SelectLabel>English</SelectLabel>
-          <SelectItem value="English">English</SelectItem>
-          <SelectItem value="Arabic">Arabic</SelectItem>
+          <SelectLabel>{t("english")}</SelectLabel>
+          <SelectItem value="English">{t("english")}</SelectItem>
+          <SelectItem value="Arabic">{t("arabic")}</SelectItem>
         </SelectGroup>
       </SelectContent>
     </Select>

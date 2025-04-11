@@ -1,8 +1,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import SelectLanguage from "./components/select-language";
-import { useTranslations } from "next-intl";
-import { LocaleType } from "@/lib/types/common";
+import { useLocale, useTranslations } from "next-intl";
 
 /**
  * A functional component that renders a navigation bar for authentication.
@@ -16,15 +15,16 @@ import { LocaleType } from "@/lib/types/common";
  * @returns `JSX.Element` The HeaderAuth component displaying authentication links and language selection.
  */
 
-export default function HeaderAuth({ locale }: LocaleType) {
+export default function HeaderAuth() {
   //Translations
   const t = useTranslations();
+  const locale = useLocale();
 
   return (
     <nav
-      className={`flex fixed top-5  ${
+      className={`flex fixed top-5 ${
         locale === "ar" ? "left-10" : "right-10"
-      }  justify-end items-center space-x-2`}
+      } justify-end items-center gap-2`}
     >
       {/* Select */}
       <SelectLanguage />

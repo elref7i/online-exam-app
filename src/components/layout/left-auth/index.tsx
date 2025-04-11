@@ -1,17 +1,18 @@
 import Image from "next/image";
 
 import broImage from "../../../../public/assets/images/bro.png";
-import { useTranslations } from "next-intl";
-import { LocaleType } from "@/lib/types/common";
+import { useLocale, useTranslations } from "next-intl";
 
-export default function LeftAuth({ locale }: LocaleType) {
+export default function LeftAuth() {
   //Translations
   const t = useTranslations();
+  const locale = useLocale();
+
   return (
     <section
       className={`left-auth shadow-custom-section pt-16 ${
-        locale === "ar" ? "pr-20 rounded-l-[100px]" : "pl-20 rounded-r-[100px]"
-      } bg-[#F0F4FC]  w-[600px] h-full`}
+        locale === "ar" ? "rounded-l-[100px]" : "rounded-r-[100px]"
+      } bg-[#F0F4FC] ps-20 w-[600px] h-full`}
     >
       <div className="w-[482px]">
         {/* Header */}
