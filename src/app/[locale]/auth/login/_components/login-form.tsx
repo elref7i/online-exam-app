@@ -43,7 +43,7 @@ export default function LoginForm() {
     if (response?.ok) {
       //عشان Session تتحدث in sever and client side
       setTimeout(() => {
-        window.location.href = response.url || "/";
+        window.location.href = response.url || "/dashboard";
       }, 2000);
       toast.success(response.status);
       return;

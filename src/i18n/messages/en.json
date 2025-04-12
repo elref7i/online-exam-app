@@ -30,5 +30,7 @@
   "verify-code": "Verify code",
   "enter-code": "Enter Code",
   "english": "English",
-  "arabic": "Arabic"
+  "arabic": "Arabic",
+  "birthdate": "Your birthdate is {date, date, date-base}",
+  "posted-date": "Posted {date, date, relative-time-base}"
 }

@@ -30,5 +30,7 @@
   "verify-code": "تحقق من الكود",
   "enter-code": "أدخل الرمز",
   "english": "إنجليزي",
-  "arabic": "عربي"
+  "arabic": "عربي",
+  "birthdate": "تاريخ ميلادك هو {date, date, date-base}",
+  "posted-date": "نشر {date, date, relative-time-base}"
 }
