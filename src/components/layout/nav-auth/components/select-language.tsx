@@ -1,13 +1,17 @@
+"use client";
 import {
   Select,
   SelectContent,
   SelectGroup,
   SelectItem,
-  SelectLabel,
+  // SelectLabel,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useTranslations } from "next-intl";
+import { usePathname, useRouter } from "@/i18n/navigation";
+import { routing } from "@/i18n/routing";
+import { Locale, useLocale, useTranslations } from "next-intl";
+import { useSearchParams } from "next/navigation";
 
 /**
  * A functional component that provides a language selection dropdown.
@@ -24,17 +28,42 @@ import { useTranslations } from "next-intl";
 export default function SelectLanguage() {
   //Translations
   const t = useTranslations();
+  const myLocale = useLocale();
 
+  // Nvaigation
+  const router = useRouter();
+  const pathName = usePathname();
+  const searchParams = useSearchParams();
+
+  console.log(typeof myLocale);
+
+  const language: Record<Locale, string> = {
+    en: t("english"),
+    ar: t("arabic"),
+  };
+
+  // Functions
+  const toggleLocale = (locale: Locale) => {
+    router.push(`${pathName}?${searchParams.toString()}`, {
+      locale,
+    });
+    console.log(locale);
+  };
   return (
-    <Select>
+    <Select onValueChange={toggleLocale}>
       <SelectTrigger className="w-fit">
-        <SelectValue placeholder={t("english")} />
+        <SelectValue placeholder={language[myLocale] ?? "Language"} />
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
-          <SelectLabel>{t("english")}</SelectLabel>
-          <SelectItem value="English">{t("english")}</SelectItem>
-          <SelectItem value="Arabic">{t("arabic")}</SelectItem>
+          {routing.locales.map((locale) => (
+            <SelectItem
+              key={locale}
+              value={locale}
+            >
+              {language[locale]}
+            </SelectItem>
+          ))}
         </SelectGroup>
       </SelectContent>
     </Select>
