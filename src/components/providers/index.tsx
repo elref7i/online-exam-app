@@ -4,8 +4,9 @@ import {
   useMessages,
   useNow,
   useTimeZone,
-} from 'next-intl';
-import NextAuthProvider from './components/next-auth-provider';
+} from "next-intl";
+import NextAuthProvider from "./components/next-auth-provider";
+import ReactQueryProvider from "./components/react-query-provider";
 
 type ProvidersProps = {
   children: React.ReactNode;
@@ -25,7 +26,7 @@ export default function Providers({ children }: ProvidersProps) {
         now={now}
         timeZone={timeZone}
       >
-        {children}
+        <ReactQueryProvider>{children}</ReactQueryProvider>
       </NextIntlClientProvider>
     </NextAuthProvider>
   );

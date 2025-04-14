@@ -13,9 +13,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import ContinueWith from "@/components/features/continue/continue-with";
-import { registerAction } from "../_actions/register.action";
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
+import useRegister from "../_hooks/use-register";
 
 export default function RegisterForm() {
   //Translations
@@ -36,9 +36,11 @@ export default function RegisterForm() {
     resolver: zodResolver(registerSchema),
   });
 
+  //Mutation
+  const { register, isPending, errorMessage } = useRegister();
   // Functions
   const onSumbit: SubmitHandler<RegisterFields> = async (values) => {
-    await registerAction(values);
+    register(values);
   };
   return (
     <Form {...form}>
@@ -234,9 +236,12 @@ export default function RegisterForm() {
           })}
         </p>
 
+        <p>{errorMessage?.message}</p>
         {/* Submit */}
         <Button
-          disabled={form.formState.isSubmitted && !form.formState.isValid}
+          disabled={
+            isPending || (form.formState.isSubmitted && !form.formState.isValid)
+          }
           type="submit"
           className="bg-hiro w-full h-14 shadow-primary-shadow rounded-[20px] mb-8 hover:bg-hiro/90"
         >
