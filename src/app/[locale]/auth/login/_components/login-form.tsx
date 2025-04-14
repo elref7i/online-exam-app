@@ -35,7 +35,7 @@ export default function LoginForm() {
   //Functions
   const onSubmit: SubmitHandler<LoginFields> = async (values) => {
     const response = await signIn("credentials", {
-      callbackUrl: "/",
+      callbackUrl: "/dashboard",
       redirect: false,
       email: values.email,
       password: values.password,

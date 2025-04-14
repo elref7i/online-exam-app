@@ -1,14 +1,10 @@
 import { RouteProps } from "@/lib/types/common";
 import { useFormatter, useTranslations } from "next-intl";
-import { setRequestLocale } from "next-intl/server";
 
 export default function Page({ params: { locale } }: RouteProps) {
   //Translations
   const t = useTranslations();
   const format = useFormatter();
-
-  // Enable static rendering
-  setRequestLocale(locale);
 
   return (
     <>
