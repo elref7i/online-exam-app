@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 import { quizes } from "../_constants/quize.constant";
 
-export default function Quizes() {
+export default function Subjects() {
   return (
     <section className="shadow-box-shadow rounded-[20px] py-8 px-4">
       {/* Title */}
@@ -11,14 +11,14 @@ export default function Quizes() {
         <h3>View All</h3>
       </header>
 
-      {/* Quizes */}
+      {/* Subjects */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {quizes.map((quize) => (
           <div
             key={quize.name}
             className="rounded-md overflow-hidden shadow-md relative"
           >
-            {/* Image Quiz */}
+            {/* Image subject */}
             <Image
               src={quize.image}
               width={330}
@@ -29,10 +29,10 @@ export default function Quizes() {
             {/* Content */}
             <div className="absolute inset-0  flex flex-col justify-end items-center mb-7 text-md ">
               <article className="bg-[#1935CA66] p-2 rounded-md text-white">
-                {/* Quiz name */}
+                {/* Subject name */}
                 <h4 className="font-bold">{quize.name}</h4>
 
-                {/* Quiz description */}
+                {/* Subject description */}
                 <p>{quize.discription}</p>
               </article>
             </div>

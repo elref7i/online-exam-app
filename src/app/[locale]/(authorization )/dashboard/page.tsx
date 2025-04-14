@@ -1,12 +1,15 @@
 import React from "react";
 import Statistics from "./_components/statistics";
-import Quizes from "./_components/quizes";
+import Subjects from "./_components/subjects";
 
 export default function Page() {
   return (
     <main className="space-y-10 mb-8">
+      {/* Statistics  */}
       <Statistics />
-      <Quizes />
+
+      {/* Subjects */}
+      <Subjects />
     </main>
   );
 }
