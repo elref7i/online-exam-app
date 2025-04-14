@@ -16,12 +16,15 @@ import {
   ForgotPasswordFields,
   forgotPasswordSchema,
 } from "@/lib/schemes/auth.schemes";
-import { forgotPasswordAction } from "../_actions/forgot-pass.action";
 import { useTranslations } from "next-intl";
+import useForgotPassword from "../_hooks/use-fotgot-passeord";
 
 export default function ForgotPassword() {
   // Translations
   const t = useTranslations();
+
+  // Mutation
+  const { forgotPassword, isPending } = useForgotPassword();
 
   // Form
   const form = useForm<ForgotPasswordFields>({
@@ -33,7 +36,7 @@ export default function ForgotPassword() {
 
   //Functions
   const onSubmit: SubmitHandler<ForgotPasswordFields> = async (values) => {
-    await forgotPasswordAction(values);
+    await forgotPassword(values);
   };
   return (
     <Form {...form}>
@@ -67,7 +70,9 @@ export default function ForgotPassword() {
 
         {/* Submit */}
         <Button
-          disabled={form.formState.isSubmitted && !form.formState.isValid}
+          disabled={
+            isPending || (form.formState.isSubmitted && !form.formState.isValid)
+          }
           type="submit"
           className="bg-hiro w-full h-14 shadow-primary-shadow rounded-[20px] mb-8 hover:bg-hiro/90"
         >

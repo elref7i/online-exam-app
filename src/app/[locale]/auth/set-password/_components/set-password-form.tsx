@@ -16,12 +16,15 @@ import {
 } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 import ContinueWith from "@/components/features/continue/continue-with";
-import { setPasswordAction } from "../_actions/set-password.action";
 import { useTranslations } from "next-intl";
+import useSetPassword from "../_hooks/use-set-password";
 
 export default function SetPasswordForm() {
   // Translations
   const t = useTranslations();
+
+  // Mutation
+  const { setPassword, isPending } = useSetPassword();
 
   // Form
   const form = useForm<SetPassswordFields>({
@@ -34,7 +37,7 @@ export default function SetPasswordForm() {
 
   //Functions
   const onSubmit: SubmitHandler<SetPassswordFields> = async (values) => {
-    await setPasswordAction(values);
+    await setPassword(values);
   };
   return (
     <Form {...form}>
@@ -92,7 +95,9 @@ export default function SetPasswordForm() {
 
         {/* Submit */}
         <Button
-          disabled={form.formState.isSubmitted && !form.formState.isValid}
+          disabled={
+            isPending || (form.formState.isSubmitted && !form.formState.isValid)
+          }
           type="submit"
           className="bg-hiro w-full h-14 shadow-primary-shadow rounded-[20px] mb-8 hover:bg-hiro/90"
         >

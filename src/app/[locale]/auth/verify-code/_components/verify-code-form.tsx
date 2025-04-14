@@ -13,12 +13,15 @@ import {
 import { Button } from "@/components/ui/button";
 import ContinueWith from "@/components/features/continue/continue-with";
 import { verifySchema, VerifyFields } from "@/lib/schemes/auth.schemes";
-import { verifyAction } from "../_actions/verify-code.action";
 import { useTranslations } from "next-intl";
+import useVerify from "../_hooks/use-verify";
 
 export default function VerifyCodeForm() {
   //Translations
   const t = useTranslations();
+
+  // Mutation
+  const { verifyCode, isPending } = useVerify();
 
   // Form
   const form = useForm<VerifyFields>({
@@ -30,7 +33,7 @@ export default function VerifyCodeForm() {
 
   //Functions
   const onSubmit: SubmitHandler<VerifyFields> = async (values) => {
-    await verifyAction(values);
+    await verifyCode(values);
   };
   return (
     <Form {...form}>
@@ -64,7 +67,9 @@ export default function VerifyCodeForm() {
 
         {/* Submit */}
         <Button
-          disabled={form.formState.isSubmitted && !form.formState.isValid}
+          disabled={
+            isPending || (form.formState.isSubmitted && !form.formState.isValid)
+          }
           type="submit"
           className="bg-hiro w-full h-14 shadow-primary-shadow rounded-[20px] mb-8 hover:bg-hiro/90"
         >

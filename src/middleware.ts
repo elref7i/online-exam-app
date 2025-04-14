@@ -11,7 +11,7 @@ const authPages = [
   "/auth/set-password",
   "/auth/verify-code",
 ];
-const publicPages = ["/", ...Array.from(authPages)];
+const publicPages = ["/home", ...Array.from(authPages)];
 
 const handleI18nRouting = createMiddleware(routing);
 
@@ -64,7 +64,9 @@ export default async function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/((?!api|_next|.*\\..*).*)"],
+  matcher: [
+    "/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)",
+  ],
 };
 
 // import { getToken } from 'next-auth/jwt';

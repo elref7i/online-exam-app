@@ -4,7 +4,7 @@ import { JSON_HEADER } from "@/lib/constants/api.constants";
 import { RegisterFields } from "@/lib/schemes/auth.schemes";
 
 export const registerAction = async (RegisterFields: RegisterFields) => {
-  const response = await fetch(`${process.env.API}/auth/signup`, {
+  const response = await fetch(`${process.env.API!}/auth/signup`, {
     method: "POST",
     body: JSON.stringify(RegisterFields),
     headers: {
@@ -15,7 +15,6 @@ export const registerAction = async (RegisterFields: RegisterFields) => {
   console.log(payload);
 
   if ("code" in payload) {
-    // لو الـ API رجعت error message من السيرفر
     const errorMessage =
       payload.message || "Something went wrong during registration.";
     throw new Error(errorMessage);

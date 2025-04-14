@@ -40,7 +40,7 @@ export default function RegisterForm() {
   const { register, isPending, errorMessage } = useRegister();
   // Functions
   const onSumbit: SubmitHandler<RegisterFields> = async (values) => {
-    register(values);
+    await register(values);
   };
   return (
     <Form {...form}>

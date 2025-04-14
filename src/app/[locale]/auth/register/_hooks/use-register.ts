@@ -11,7 +11,7 @@ export default function useRegister() {
   // Mutation
   const {
     isPending,
-    mutate: register,
+    mutateAsync: register,
     error: errorMessage,
   } = useMutation({
     mutationFn: async (fields: RegisterFields) => await registerAction(fields),
