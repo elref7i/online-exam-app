@@ -1,4 +1,4 @@
-import Exams from "./_components/exams";
+import Exams from "@/components/features/exam-component/exams-component";
 
 export default function Page() {
   return (
@@ -7,7 +7,7 @@ export default function Page() {
       <h1 className="font-[500] text-[18px] mb-6">Front-End Quiz</h1>
 
       {/* Exams */}
-      <Exams />
+      <Exams check={true} />
     </main>
   );
 }

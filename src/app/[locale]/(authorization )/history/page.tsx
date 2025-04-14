@@ -1,3 +1,13 @@
+import Exams from "@/components/features/exam-component/exams-component";
+
 export default function Page() {
-  return <div>page</div>;
+  return (
+    <>
+      {/* Title */}
+      <h1 className="font-[500] text-[18px] mb-6">Front-End Quiz</h1>
+
+      {/* Exams */}
+      <Exams check={false} />
+    </>
+  );
 }
