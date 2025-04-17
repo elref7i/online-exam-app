@@ -14,14 +14,16 @@ import {
 import { Button } from "@/components/ui/button";
 import ContinueWith from "@/components/features/continue/continue-with";
 import Link from "next/link";
-import { signIn } from "next-auth/react";
-import { toast } from "sonner";
 import { useLocale, useTranslations } from "next-intl";
+import useLogin from "../_hooks/use-login";
 
 export default function LoginForm() {
   //Translations
   const t = useTranslations();
   const locale = useLocale();
+
+  //Mutation
+  const { isPending, login } = useLogin();
 
   //Form
   const form = useForm<LoginFields>({
@@ -34,22 +36,7 @@ export default function LoginForm() {
 
   //Functions
   const onSubmit: SubmitHandler<LoginFields> = async (values) => {
-    const response = await signIn("credentials", {
-      callbackUrl: "/dashboard",
-      redirect: false,
-      email: values.email,
-      password: values.password,
-    });
-    if (response?.ok) {
-      //عشان Session تتحدث in sever and client side
-      setTimeout(() => {
-        window.location.href = response.url || "/dashboard";
-      }, 2000);
-      toast.success(response.status);
-      return;
-    }
-    toast.error(response?.error);
-    console.error(response?.error);
+    login(values);
   };
 
   return (
@@ -118,7 +105,9 @@ export default function LoginForm() {
 
         {/* Submit */}
         <Button
-          disabled={form.formState.isSubmitted && !form.formState.isValid}
+          disabled={
+            isPending || (form.formState.isSubmitted && !form.formState.isValid)
+          }
           type="submit"
           className="bg-hiro w-full h-14 shadow-primary-shadow rounded-[20px] mb-8 hover:bg-hiro/90"
         >
