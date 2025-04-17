@@ -3,7 +3,7 @@ import Credentials from "next-auth/providers/credentials";
 import { JSON_HEADER } from "./lib/constants/api.constants";
 export const authOptions: NextAuthOptions = {
   pages: {
-    signIn: "./auth/login",
+    signIn: "/auth/login",
   },
   providers: [
     Credentials({
