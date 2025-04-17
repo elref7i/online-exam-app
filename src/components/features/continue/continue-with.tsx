@@ -1,7 +1,5 @@
 "use client";
 import IconSocial from "@/components/common/icon-social";
-import { Button } from "@/components/ui/button";
-import { signIn } from "next-auth/react";
 import { useTranslations } from "next-intl";
 import { FaFacebook } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
@@ -31,20 +29,9 @@ export default function ContinueWith() {
       {/* Icons */}
       <ul className="flex justify-center items-center gap-8">
         {/* Icon Google */}
-        <li className="size-12 bg-white shadow-primary-shadow border-[1px] rounded-2xl flex items-center justify-center">
-          <Button
-            type="button"
-            onClick={() => {
-              signIn("google", {
-                callbackUrl: "http://localhost:3000/home",
-              });
-            }}
-            className="text-2xl"
-          >
-            <FcGoogle />
-          </Button>
-        </li>
-
+        <IconSocial>
+          <FcGoogle className=" text-[#1877F2]" />
+        </IconSocial>
         {/* Icon Facebook */}
         <IconSocial>
           <FaFacebook className=" text-[#1877F2]" />
