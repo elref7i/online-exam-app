@@ -20,3 +20,10 @@ declare type ErrorProps = {
   error: Error & { digest?: string };
   reset: () => void;
 };
+
+// meta data
+declare type MetadataType = {
+  currentPage: number;
+  numberOfPages: number;
+  limit: number;
+};

@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import React from "react";
 import useSubjects from "../_hooks/use-subjects";
@@ -34,7 +35,7 @@ export default function SubjectsList() {
             <article className="bg-[#1935CA66] p-2 rounded-md text-white">
               {/* Subject name */}
               <h4
-                onClick={() => router.push(`/dashboard/${subject._id}`)}
+                onClick={() => router.push(`/exams/${subject._id}`)}
                 className="font-bold cursor-pointer"
               >
                 {subject.name}

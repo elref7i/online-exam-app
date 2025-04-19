@@ -1,13 +1,6 @@
 declare type Subjects = {
-  metadata: Metadata;
+  metadata: MetadataType;
   subjects: Subject[];
-};
-
-// meta data
-declare type Metadata = {
-  currentPage: number;
-  numberOfPages: number;
-  limit: number;
 };
 
 declare type Subject = {
