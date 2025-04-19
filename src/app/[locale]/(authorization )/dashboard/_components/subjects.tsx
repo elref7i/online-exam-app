@@ -4,9 +4,12 @@ import SubjectsList from "./subjects-list";
 export default function Subjects() {
   return (
     <section className="shadow-box-shadow rounded-[20px] py-8 px-4">
-      {/* Title */}
+      {/* Header */}
       <header className="font-[500] text-2xl text-hiro flex justify-between items-center mb-6">
+        {/* Title */}
         <h2>Qizes</h2>
+
+        {/* View all */}
         <h3 className="cursor-pointer">View All</h3>
       </header>
 
