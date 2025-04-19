@@ -10,7 +10,6 @@ export default function SubjectsList() {
 
   // Quieris
   const { error, payload, isLoading } = useSubjects();
-  console.log(payload?.subjects);
 
   if (isLoading) return <p>Loading</p>;
   if (error) return <p>{error.message}</p>;

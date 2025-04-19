@@ -2,19 +2,21 @@ import { Button } from "@/components/ui/button";
 
 type ExamsProps = {
   check: boolean;
+  dataInfo: Exam;
 };
-export default function Exams({ check }: ExamsProps) {
+export default function ExamComponent({ check, dataInfo }: ExamsProps) {
+  const { duration, title, numberOfQuestions } = dataInfo;
   return (
     <section className="space-y-6">
       <div className="flex  justify-between items-center shadow-md p-4 rounded-md">
         {/* About exam */}
         <div>
           {/* Name exam */}
-          <h2 className="font-medium mb-1">HTML</h2>
+          <h2 className="font-medium mb-1">{title}</h2>
 
           {/* Number questions */}
           <h3 className={`text-sm text-first-lead ${!check && "mb-4"}`}>
-            20 Question
+            {numberOfQuestions} Question
           </h3>
 
           {/* Result exam */}
@@ -27,7 +29,7 @@ export default function Exams({ check }: ExamsProps) {
 
         {/* Action exam */}
         <div>
-          <h4 className="text-sm mb-2">15 Minutes</h4>
+          <h4 className="text-sm mb-2">{duration} Minutes</h4>
 
           {check === true ? (
             // Start exam
