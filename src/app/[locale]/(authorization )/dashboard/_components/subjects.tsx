@@ -1,6 +1,6 @@
-import Image from "next/image";
-import React from "react";
-import { quizes } from "../_constants/quize.constant";
+"use client";
+import React, { Suspense } from "react";
+import SubjectsList from "./subjects-list";
 
 export default function Subjects() {
   return (
@@ -8,37 +8,15 @@ export default function Subjects() {
       {/* Title */}
       <header className="font-[500] text-2xl text-hiro flex justify-between items-center mb-6">
         <h2>Qizes</h2>
-        <h3>View All</h3>
+        <h3 className="cursor-pointer">View All</h3>
       </header>
 
       {/* Subjects */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {quizes.map((quize) => (
-          <div
-            key={quize.name}
-            className="rounded-md overflow-hidden shadow-md relative"
-          >
-            {/* Image subject */}
-            <Image
-              src={quize.image}
-              width={330}
-              height={293}
-              alt="image-quiz"
-            />
-
-            {/* Content */}
-            <div className="absolute inset-0  flex flex-col justify-end items-center mb-7 text-md ">
-              <article className="bg-[#1935CA66] p-2 rounded-md text-white">
-                {/* Subject name */}
-                <h4 className="font-bold">{quize.name}</h4>
-
-                {/* Subject description */}
-                <p>{quize.discription}</p>
-              </article>
-            </div>
-          </div>
-        ))}
-      </div>
+      <Suspense fallback={"loading"}>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <SubjectsList />
+        </div>
+      </Suspense>
     </section>
   );
 }

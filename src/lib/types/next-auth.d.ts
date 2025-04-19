@@ -2,7 +2,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import NextAuth, { User } from "next-auth";
 import { JWT } from "next-auth/jwt";
-import { ApllicationUser } from "./auth";
 
 declare module "next-auth" {
   /**
@@ -11,13 +10,15 @@ declare module "next-auth" {
    */
   interface User {
     token: string;
-    user: ApllicationUser;
+    user: ApplicationUser;
   }
 
   /**
    * Returned by `useSession`, `getSession` and received as a prop on the `SessionProvider` React Context
    */
-  interface Session extends Omit<User, "token"> {}
+  interface Session {
+    user: ApplicationUser;
+  }
 }
 
 declare module "next-auth/jwt" {

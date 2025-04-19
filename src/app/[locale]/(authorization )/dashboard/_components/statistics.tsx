@@ -2,20 +2,33 @@ import { Progress } from "@/components/ui/progress";
 import { FaFlag } from "react-icons/fa";
 import person from "../../../../../../public/assets/images/Frame 40.png";
 import Image from "next/image";
-export default function Statistics() {
+import { authOptions } from "@/auth";
+import { getServerSession } from "next-auth";
+export default async function Statistics() {
+  const session = await getServerSession(authOptions);
+  console.log(session?.user);
+
   return (
-    <section className="grid grid-cols-[1fr_3fr] shadow-box-shadow rounded-[20px] py-8 px-4">
-      <Image
-        src={person}
-        height={216}
-        width={216}
-        alt="person"
-      ></Image>
+    <section className="grid grid-cols-[1fr_4fr] shadow-box-shadow rounded-[20px] py-8 px-4">
+      <div className="h-48">
+        <Image
+          src={person}
+          sizes="20vw"
+          alt="person"
+          className="object-contain"
+        />
+      </div>
       <div>
         {/*  Name person */}
         <div className="mb-6 space-y-1">
-          <h1 className="font-bold text-hiro text-3xl">Ahmed Khaled Refai</h1>
-          <p className="text-xl text-second-lead font-normal">Voloptatem aut</p>
+          <h1 className="font-bold text-hiro text-3xl">
+            {session?.user.firstName}
+            {""}
+            {session?.user.lastName}
+          </h1>
+          <p className="text-xl text-second-lead font-normal">
+            {session?.user.email}
+          </p>
         </div>
 
         {/* Range */}
