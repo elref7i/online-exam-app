@@ -6,6 +6,7 @@ import { MdHistory } from "react-icons/md";
 import { CgLogOut } from "react-icons/cg";
 import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
+import { PiExam } from "react-icons/pi";
 
 // Links
 const links = [
@@ -13,6 +14,11 @@ const links = [
     name: "Dashboard",
     path: "/dashboard",
     icon: <HiTemplate />,
+  },
+  {
+    name: "Exams",
+    path: "/exams",
+    icon: <PiExam />,
   },
   {
     name: "Quiz History",
