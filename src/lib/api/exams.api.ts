@@ -7,7 +7,7 @@ export async function getExams() {
       token: (await getAuthHeaders()).token,
     },
   });
-  const payload: APIResponse<SuccessfulResponse<Exams>> = await response.json();
+  const payload: APIResponse<Exams> = await response.json();
 
   if ("code" in payload) throw new Error(payload.message);
   return payload;

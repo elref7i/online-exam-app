@@ -1,7 +1,7 @@
 import { Locale } from "next-intl";
 import { ReactNode } from "react";
 
-declare type SearchParams = string | string[] | undefined;
+declare type searchParams = { [key: string]: string | string[] | undefined };
 
 declare type LocaleType = {
   locale: Locale;

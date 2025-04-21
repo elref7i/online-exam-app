@@ -3,9 +3,10 @@ import { NextRequest, NextResponse } from "next/server";
 import { getToken } from "next-auth/jwt";
 
 export async function GET(req: NextRequest) {
+  // Variables
   const token = await getToken({ req });
-  console.log("refai");
 
+  // Fetch Data
   const response = await fetch(`${process.env.API!}/subjects`, {
     headers: {
       ...JSON_HEADER,
@@ -13,8 +14,7 @@ export async function GET(req: NextRequest) {
     },
   });
 
-  const payload: APIResponse<SuccessfulResponse<Subjects>> =
-    await response.json();
+  const payload: APIResponse<Subjects> = await response.json();
 
   return NextResponse.json(payload, { status: response.status });
 }

@@ -1,4 +1,4 @@
-import ExamComponent from "@/components/features/exam-component/exams-component";
+import ExamComponent from "./exams-component";
 
 type ExamProps = {
   exams: Exam[];
@@ -10,7 +10,6 @@ export default function ExamList({ exams }: ExamProps) {
       {exams.map((exam) => (
         <ExamComponent
           key={exam._id}
-          check={true}
           dataInfo={exam}
         />
       ))}

@@ -6,6 +6,7 @@ export default async function Page() {
   // Fetch data
   const payload = await getExams();
   // console.log(payload);
+
   return (
     <main>
       {/* Title */}

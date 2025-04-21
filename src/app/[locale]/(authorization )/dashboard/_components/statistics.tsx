@@ -6,7 +6,6 @@ import { authOptions } from "@/auth";
 import { getServerSession } from "next-auth";
 export default async function Statistics() {
   const session = await getServerSession(authOptions);
-  console.log(session?.user);
 
   return (
     <section className="grid grid-cols-[1fr_4fr] shadow-box-shadow rounded-[20px] py-8 px-4">

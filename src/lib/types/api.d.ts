@@ -1,5 +1,10 @@
+declare type DatabaseProperties = {
+  _id: string;
+  createdAt: string;
+};
+
 declare type SuccessfulResponse<T> = {
-  message: 'success';
+  message: "success";
 } & T;
 
 declare type ErrorResponse = {
@@ -8,7 +13,7 @@ declare type ErrorResponse = {
 };
 
 declare type SuccessfulCodeResponse = {
-  status: 'Success';
+  status: "Success";
 };
 
 declare type APIResponse<T> = SuccessfulResponse<T> | ErrorResponse;

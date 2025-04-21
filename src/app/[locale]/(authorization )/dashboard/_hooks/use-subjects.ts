@@ -9,8 +9,7 @@ export default function useSubjects() {
     queryKey: ["subjects"],
     queryFn: async () => {
       const response = await fetch(`${process.env.NEXT_PUBLIC_API}/subjects`);
-      const payload: APIResponse<SuccessfulResponse<Subjects>> =
-        await response.json();
+      const payload: APIResponse<Subjects> = await response.json();
 
       if ("code" in payload) throw new Error(payload.message);
       return payload;
