@@ -9,7 +9,6 @@ export async function getExams() {
   });
   const payload: APIResponse<Exams> = await response.json();
 
-  if ("code" in payload) throw new Error(payload.message);
   return payload;
 }
 

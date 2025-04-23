@@ -2,9 +2,12 @@ import { getExamsOnSubject } from "@/lib/api/exams.api";
 import { Suspense } from "react";
 import ExamList from "../_components/exam-list";
 
-type Params = { params: { examonsubjectid: string } };
+type Params = {
+  params: { examonsubjectid: string };
+  searchParams: SearchParams;
+};
 
-export default async function Page({ params }: Params) {
+export default async function Page({ params, searchParams }: Params) {
   // Params
   const { examonsubjectid } = params;
 
@@ -19,7 +22,10 @@ export default async function Page({ params }: Params) {
 
       {/* Content */}
       <Suspense fallback={<div>Loading...</div>}>
-        <ExamList exams={payload.exams} />
+        <ExamList
+          exams={payload.exams}
+          searchParams={searchParams}
+        />
       </Suspense>
     </div>
   );

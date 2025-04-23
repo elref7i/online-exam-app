@@ -8,12 +8,22 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import QuestionsForm from "./questions-form";
-
+import getQuestions from "@/lib/api/questions.api";
+import { convertSearchParams } from "@/lib/utils/convert-search-params";
+import catchError from "@/lib/utils/catch-error";
 type QuestionsDialogProps = {
-  examId: string;
+  searchParams: SearchParams;
 };
 
-export default function QuestionsDialog({ examId }: QuestionsDialogProps) {
+export default async function QuestionsDialog({
+  searchParams,
+}: QuestionsDialogProps) {
+  const [payload, error] = await catchError(() =>
+    getQuestions(convertSearchParams(searchParams).toString())
+  );
+
+  if (error) return <div>{error}</div>;
+
   return (
     <Dialog>
       {/* Trigger */}
@@ -26,14 +36,15 @@ export default function QuestionsDialog({ examId }: QuestionsDialogProps) {
       {/* Content */}
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Are you absolutely sure?{examId}</DialogTitle>
+          <DialogTitle>Are you absolutely sure?</DialogTitle>
           <DialogDescription>
             This action cannot be undone. This will permanently delete your
             account and remove your data from our servers.
           </DialogDescription>
         </DialogHeader>
 
-        <QuestionsForm />
+        {/* Form */}
+        {payload?.questions && <QuestionsForm questions={payload.questions} />}
       </DialogContent>
     </Dialog>
   );

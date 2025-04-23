@@ -2,9 +2,10 @@ import QuestionsDialog from "./questions-dialog";
 
 type ExamsProps = {
   dataInfo: Exam;
+  searchParams: SearchParams;
 };
-export default function ExamComponent({ dataInfo }: ExamsProps) {
-  const { duration, title, numberOfQuestions, _id: id } = dataInfo;
+export default function ExamComponent({ dataInfo, searchParams }: ExamsProps) {
+  const { duration, title, numberOfQuestions } = dataInfo;
   return (
     <div className="flex  justify-between items-center shadow-md p-4 rounded-md">
       {/* About exam */}
@@ -24,7 +25,7 @@ export default function ExamComponent({ dataInfo }: ExamsProps) {
         <h4 className="text-sm mb-2">{duration} Minutes</h4>
 
         {/* // Start exam */}
-        <QuestionsDialog examId={id} />
+        <QuestionsDialog searchParams={searchParams} />
       </div>
     </div>
   );
