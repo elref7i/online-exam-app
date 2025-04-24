@@ -1,8 +1,10 @@
-import { useQuery } from "@tanstack/react-query";
+import { AnswerFields } from "@/lib/schemes/exam.schemes";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { checkQuestionsAction } from "../_actions/exam.action";
+import { toast } from "sonner";
 
+// Get questions on exam
 export default function useQuestionOnExam() {
-  //Navigation
-
   const {
     data: payload,
     isLoading,
@@ -19,4 +21,16 @@ export default function useQuestionOnExam() {
   });
 
   return { payload, isLoading, error };
+}
+
+// Check Questions
+export function useCheckQuestions() {
+  const { mutate, error, isPending } = useMutation({
+    mutationFn: async (values: AnswerFields) =>
+      await checkQuestionsAction(values),
+    onSuccess: (data) => toast.success(data.message),
+    onError: (error) => toast.error(error.message),
+  });
+
+  return { isPending, error, mutate };
 }

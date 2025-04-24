@@ -1,8 +1,6 @@
 import { getAuthHeaders } from "../utils/auth-headers";
 
 export default async function getQuestions(searchParams: string) {
-  console.log("searchParams", `${process.env.API!}/questions?${searchParams}`);
-
   const response = await fetch(
     `${process.env.API!}/questions?${searchParams}`,
     {

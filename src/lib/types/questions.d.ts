@@ -18,3 +18,19 @@ declare type Answers = {
   answer: string;
   key: string;
 };
+
+declare type QuestionResult = {
+  QID: string;
+  Question: string;
+  inCorrectAnswer: string;
+  correctAnswer: string;
+  answers: Record<string, string>; // أو ممكن تزود التفاصيل حسب المحتوى المتوقع
+};
+
+declare type CheckResponse = {
+  correct: number;
+  wrong: number;
+  total: string;
+  WrongQuestions: QuestionResult[];
+  correctQuestions: QuestionResult[];
+};

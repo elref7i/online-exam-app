@@ -11,7 +11,7 @@ const authPages = [
   "/auth/set-password",
   "/auth/verify-code",
 ];
-const publicPages = ["/home", ...Array.from(authPages)];
+const publicPages = ["/", ...Array.from(authPages)];
 
 const handleI18nRouting = createMiddleware(routing);
 

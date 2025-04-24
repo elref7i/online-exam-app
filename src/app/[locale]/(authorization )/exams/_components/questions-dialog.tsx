@@ -9,17 +9,19 @@ import {
 } from "@/components/ui/dialog";
 import QuestionsForm from "./questions-form";
 import getQuestions from "@/lib/api/questions.api";
-import { convertSearchParams } from "@/lib/utils/convert-search-params";
 import catchError from "@/lib/utils/catch-error";
 type QuestionsDialogProps = {
   searchParams: SearchParams;
+  examId: string;
 };
 
 export default async function QuestionsDialog({
   searchParams,
+  examId,
 }: QuestionsDialogProps) {
+  // Fetch data
   const [payload, error] = await catchError(() =>
-    getQuestions(convertSearchParams(searchParams).toString())
+    getQuestions(`exam=${examId}`)
   );
 
   if (error) return <div>{error}</div>;
@@ -34,8 +36,8 @@ export default async function QuestionsDialog({
       </DialogTrigger>
 
       {/* Content */}
-      <DialogContent>
-        <DialogHeader>
+      <DialogContent className="min-h-[560px]">
+        <DialogHeader className="sr-only">
           <DialogTitle>Are you absolutely sure?</DialogTitle>
           <DialogDescription>
             This action cannot be undone. This will permanently delete your

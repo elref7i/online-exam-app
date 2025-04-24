@@ -5,7 +5,7 @@ type ExamsProps = {
   searchParams: SearchParams;
 };
 export default function ExamComponent({ dataInfo, searchParams }: ExamsProps) {
-  const { duration, title, numberOfQuestions } = dataInfo;
+  const { duration, title, numberOfQuestions, _id: id } = dataInfo;
   return (
     <div className="flex  justify-between items-center shadow-md p-4 rounded-md">
       {/* About exam */}
@@ -14,7 +14,7 @@ export default function ExamComponent({ dataInfo, searchParams }: ExamsProps) {
         <h2 className="font-medium mb-1">{title}</h2>
 
         {/* Number questions */}
-        <h3 className="text-sm text-first-lead  mb-4">
+        <h3 className="text-sm text-first-lead mb-4">
           {numberOfQuestions} Question
         </h3>
       </div>
@@ -25,7 +25,10 @@ export default function ExamComponent({ dataInfo, searchParams }: ExamsProps) {
         <h4 className="text-sm mb-2">{duration} Minutes</h4>
 
         {/* // Start exam */}
-        <QuestionsDialog searchParams={searchParams} />
+        <QuestionsDialog
+          searchParams={searchParams}
+          examId={id}
+        />
       </div>
     </div>
   );
