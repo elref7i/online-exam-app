@@ -7,7 +7,7 @@ export default function useLogin() {
   const { isPending, mutate: login } = useMutation({
     mutationFn: async (loginField: LoginFields) => {
       const response = await signIn("credentials", {
-        callbackUrl: "/dashboard",
+        callbackUrl: "/",
         redirect: false,
         email: loginField.email,
         password: loginField.password,
@@ -17,7 +17,7 @@ export default function useLogin() {
     },
     onSuccess: (data) => {
       setTimeout(() => {
-        window.location.href = data?.url || "/dashboard";
+        window.location.href = data?.url || "/";
       }, 1000);
       toast.success("Logged in successfully");
     },
