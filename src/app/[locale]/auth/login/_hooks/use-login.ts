@@ -9,7 +9,7 @@ export default function useLogin() {
       const callbackUrl =
         typeof window !== "undefined"
           ? window.location.origin
-          : process.env.NEXTAUTH_URL || "/";
+          : process.env.NEXT_PUBLIC_BASE_URL || "/";
       const response = await signIn("credentials", {
         callbackUrl,
         redirect: false,
