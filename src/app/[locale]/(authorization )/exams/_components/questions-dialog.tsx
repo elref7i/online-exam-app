@@ -7,16 +7,15 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import QuestionsForm from "./questions-form";
 import getQuestions from "@/lib/api/questions.api";
 import catchError from "@/lib/utils/catch-error";
+import QuestionsForm from "./questions-form";
 type QuestionsDialogProps = {
-  searchParams: SearchParams;
+  searchParams?: SearchParams;
   examId: string;
 };
 
 export default async function QuestionsDialog({
-  searchParams,
   examId,
 }: QuestionsDialogProps) {
   // Fetch data
@@ -36,7 +35,7 @@ export default async function QuestionsDialog({
       </DialogTrigger>
 
       {/* Content */}
-      <DialogContent className="min-h-[560px]">
+      <DialogContent className="overflow-auto  max-h-[600px] ">
         <DialogHeader className="sr-only">
           <DialogTitle>Are you absolutely sure?</DialogTitle>
           <DialogDescription>
@@ -45,7 +44,7 @@ export default async function QuestionsDialog({
           </DialogDescription>
         </DialogHeader>
 
-        {/* Form */}
+        {/* Modal Content */}
         {payload?.questions && <QuestionsForm questions={payload.questions} />}
       </DialogContent>
     </Dialog>
