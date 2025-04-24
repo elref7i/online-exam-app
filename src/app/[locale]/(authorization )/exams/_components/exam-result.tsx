@@ -6,7 +6,8 @@ type ExamResultProps = {
   payload: CheckResponse;
 };
 export default function ExamResult({ questions, payload }: ExamResultProps) {
-  console.log(questions);
+  console.log("questions", questions);
+  console.log("payload", payload);
 
   return (
     <div className="question grid grid-cols-12 gap-5 overflow-auto ">
@@ -22,10 +23,14 @@ export default function ExamResult({ questions, payload }: ExamResultProps) {
               key={answer.key}
               className="flex items-center space-x-2 space-y-2"
             >
-              <Checkbox id="terms" />
+              <Checkbox
+                id="terms"
+                checked={true}
+                className="bg-red-500"
+              />
               <label
                 htmlFor="terms"
-                className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                className="text-sm  font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
               >
                 {answer.answer}
               </label>

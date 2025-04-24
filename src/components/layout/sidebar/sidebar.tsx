@@ -3,10 +3,9 @@ import logo from "../../../../public/assets/images/Logo.png";
 import Image from "next/image";
 import { HiTemplate } from "react-icons/hi";
 import { MdHistory } from "react-icons/md";
-import { CgLogOut } from "react-icons/cg";
 import { Link } from "@/i18n/navigation";
-import { Button } from "@/components/ui/button";
 import { PiExam } from "react-icons/pi";
+import Logout from "./components/logout";
 
 // Links
 const links = [
@@ -53,14 +52,7 @@ export default function Sidebar() {
         ))}
 
         {/* Log out */}
-        <li>
-          <Button
-            variant={"destructive"}
-            className="text-xl font-bold"
-          >
-            <CgLogOut className="text-2xl font-bold" /> Log Out
-          </Button>
-        </li>
+        <Logout />
       </ul>
     </div>
   );
