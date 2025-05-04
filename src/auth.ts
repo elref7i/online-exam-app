@@ -69,4 +69,16 @@ export const authOptions: NextAuthOptions = {
     //callbackurl => بتوفرها عشان مثلا لو دخلت على صفحه وكنت لازم تسجل وبعدين تروح تسجل وبعدين يرجعك على الصفحه اللى مكنتش عارف تدخلها
     // signin => اثناء
   },
+
+  cookies: {
+    sessionToken: {
+      name: `__Secure-next-auth.session-token`,
+      options: {
+        httpOnly: true,
+        sameSite: "none",
+        path: "/",
+        secure: true, // لازم تكون true علشان Vercel HTTPS
+      },
+    },
+  },
 };

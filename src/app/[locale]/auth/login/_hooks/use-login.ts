@@ -12,13 +12,16 @@ export default function useLogin() {
         email: loginField.email,
         password: loginField.password,
       });
+
       if (response?.error) throw new Error(response.error);
+
       return response;
     },
     onSuccess: (data) => {
       setTimeout(() => {
         window.location.href = data?.url || "/";
       }, 1000);
+
       toast.success("Logged in successfully");
     },
   });
