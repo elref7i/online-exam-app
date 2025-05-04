@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📝 Online Exam App
 
-## Getting Started
+A full-featured online exam platform built using **Next.js 14 App Router** with modern web development tools and best practices like **clean architecture**, **server actions**, and **type-safe validation**.
 
-First, run the development server:
+## 🔧 Tech Stack
+
+- **Next.js 14 (App Router)**
+- **TypeScript**
+- **React Query** – for server state management
+- **React Hook Form + Zod** – for type-safe form validation
+- **NextAuth.js** – for secure authentication
+- **next-intl** – for internationalization (i18n)
+- **Tailwind CSS + ShadCN UI** – for responsive, accessible UI
+- **React Icons** – for consistent iconography
+- **Server Actions & Route Handlers** – for server-side operations only (no client mutations)
+- **Clean Code & Clean Architecture** – with clear folder structure and separation of concerns
+
+## 🚀 Features
+
+- 🔐 Authentication using **NextAuth**
+- 🌍 Multilingual support using **next-intl**
+- 📄 Exam creation and participation
+- 📊 Result tracking
+- 🎯 Role-based access control
+- ⚙️ Form handling with validation (Zod + RHF)
+- ☁️ Fetching via **server actions and route handlers only**
+
+## 📁 Folder Structure Highlights
+
+- `app/` — App Router with layouts, pages, and routes
+- `lib/` — Shared utilities and helper functions
+- `components/` — Reusable UI components (with ShadCN)
+- `actions/` — Server actions for mutation logic
+- `schemas/` — Zod schemas for validation
+- `hooks/` — Custom hooks
+- `services/` — Abstraction layer for data fetching (React Query)
+- `auth/` — NextAuth configuration
+
+## 🎓 Training & Learning Outcomes
+
+This project was developed as part of my **advanced frontend training**, focusing on:
+
+- Mastery of **Next.js App Router** and latest features (server components, actions)
+- Applying **clean architecture** in a scalable web app
+- Writing **type-safe** code with **TypeScript**, **Zod**, and **React Hook Form**
+- Structuring secure and performant **API communication**
+- Using **React Query** for optimized state fetching and caching
+- Building a modern, accessible UI with **Tailwind CSS** and **ShadCN**
+
+## 🛠️ Getting Started
 
 ```bash
+git clone https://github.com/elref7i/online-exam-app.git
+cd online-exam-app
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
