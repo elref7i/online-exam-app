@@ -1,4 +1,3 @@
-import React from "react";
 import logo from "../../../../public/assets/images/Logo.png";
 import Image from "next/image";
 import { HiTemplate } from "react-icons/hi";
@@ -6,12 +5,14 @@ import { MdHistory } from "react-icons/md";
 import { Link } from "@/i18n/navigation";
 import { PiExam } from "react-icons/pi";
 import Logout from "./components/logout";
+import { IoMdCloseCircleOutline } from "react-icons/io";
+import { cn } from "@/lib/utils/tailwind-merge";
 
 // Links
 const links = [
   {
     name: "Dashboard",
-    path: "/dashboard",
+    path: "/",
     icon: <HiTemplate />,
   },
   {
@@ -27,12 +28,22 @@ const links = [
 ];
 
 export default function Sidebar() {
+  //States
+
   return (
-    <div className="pt-10 ps-8">
+    <div
+      className={cn(
+        "pt-12 ps-8 w-52 shadow-md fixed top-0 bottom-0 shadow-hiro bg-slate-100  rounded-r-[20px]"
+      )}
+    >
+      {/* Toggle Close */}
+      <div className="absolute top-5 bg-slate-200 shadow-md rounded-r-full -right-8 flex  gap-2 items-center">
+        <IoMdCloseCircleOutline className="text-3xl text-red-600" />
+      </div>
       {/* Logo */}
       <Image
         src={logo}
-        width={151}
+        width={130}
         height={29}
         alt="logo-elevate"
       />

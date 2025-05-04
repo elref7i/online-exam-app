@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 
 export default function Header() {
   return (
-    <header className=" flex items-center gap-5 justify-between mb-10">
+    <header className=" flex flex-col lg:flex-row items-center gap-5 justify-between mb-10">
       {/* Search */}
       <div className="relative w-fit flex-1">
         <IoMdSearch className="text-hiro size-5 absolute left-2  top-1/2 -translate-y-1/2" />
@@ -16,14 +16,16 @@ export default function Header() {
         />
       </div>
 
-      {/* Start Quiz */}
-      <Button className="bg-hiro rounded-2xl">Start Quiz</Button>
+      <div className="flex items-center gap-3 -order-1 lg:order-1 ">
+        {/* Start Quiz */}
+        <Button className="bg-hiro rounded-2xl">Search Quiz</Button>
 
-      {/* Avatar */}
-      <Avatar>
-        <AvatarImage src="https://github.com/shadcn.png" />
-        <AvatarFallback>CN</AvatarFallback>
-      </Avatar>
+        {/* Avatar */}
+        <Avatar>
+          <AvatarImage src="https://github.com/shadcn.png" />
+          <AvatarFallback>CN</AvatarFallback>
+        </Avatar>
+      </div>
     </header>
   );
 }

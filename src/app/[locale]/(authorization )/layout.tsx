@@ -5,19 +5,16 @@ import { ReactNode } from "react";
 export default function layout({ children }: { children: ReactNode }) {
   return (
     <>
-      <div className="grid grid-cols-[1fr_4fr] gap-9">
-        {/* SideBar */}
-        <Sidebar />
+      {/* SideBar */}
+      <Sidebar />
+      {/* Right Section */}
+      <main className="container pl-64 pt-10 min-h-screen">
+        {/* Header */}
+        <Header />
 
-        {/* Right Section */}
-        <div className="container pt-10">
-          {/* Header */}
-          <Header />
-
-          {/* Main content */}
-          {children}
-        </div>
-      </div>
+        {/* Main content */}
+        {children}
+      </main>
     </>
   );
 }

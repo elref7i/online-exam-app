@@ -10,7 +10,7 @@ export default function LeftAuth() {
 
   return (
     <section
-      className={`left-auth shadow-custom-section pt-16 ${
+      className={`left-auth shadow-custom-section pt-16 hidden lg:block ${
         locale === "ar" ? "rounded-l-[100px]" : "rounded-r-[100px]"
       } bg-[#F0F4FC] ps-20 w-[600px] h-full`}
     >

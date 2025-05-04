@@ -8,9 +8,9 @@ export default async function Statistics() {
   const session = await getServerSession(authOptions);
 
   return (
-    <section className="grid grid-cols-[1fr_3fr] space-x-5 shadow-box-shadow rounded-[20px] py-8 px-4">
+    <section className="grid grid-cols-12 space-x-5 space-y-2 justify-items-center lg:justify-items-stretch shadow-box-shadow rounded-[20px] py-8 px-4">
       {/* Image */}
-      <div className="h-48 rounded-md overflow-hidden ">
+      <div className="h-48 col-span-12 lg:col-span-2 rounded-md overflow-hidden ">
         <Image
           src={person}
           sizes="20vw"
@@ -20,7 +20,7 @@ export default async function Statistics() {
       </div>
 
       {/* Content */}
-      <div>
+      <div className="col-span-12 lg:col-span-10 text-center lg:text-start">
         {/*  Data person */}
         <div className="mb-6 space-y-1">
           {/* Name  */}

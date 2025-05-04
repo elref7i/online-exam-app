@@ -6,12 +6,8 @@ import { toast } from "sonner";
 export default function useLogin() {
   const { isPending, mutate: login } = useMutation({
     mutationFn: async (loginField: LoginFields) => {
-      const callbackUrl =
-        typeof window !== "undefined"
-          ? window.location.origin
-          : process.env.NEXT_PUBLIC_BASE_URL || "/";
       const response = await signIn("credentials", {
-        callbackUrl,
+        callbackUrl: "/",
         redirect: false,
         email: loginField.email,
         password: loginField.password,
