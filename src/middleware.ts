@@ -48,6 +48,7 @@ export default async function middleware(req: NextRequest) {
 
   if (isPublicPage) {
     const token = await getToken({ req });
+    console.log("MIDDLEWARE TOKEN:", token);
     const authPathnameRegex = localesRegex(authPages);
     const isAuthPage = authPathnameRegex.test(req.nextUrl.pathname);
 
