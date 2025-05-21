@@ -13,7 +13,6 @@ export default async function Page({ params, searchParams }: Params) {
 
   // Fetch data
   const payload = await getExamsOnSubject({ subjectId: examonsubjectid });
-  // console.log(payload);
 
   return (
     <div>

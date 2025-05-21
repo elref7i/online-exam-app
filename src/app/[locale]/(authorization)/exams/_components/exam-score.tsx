@@ -6,12 +6,12 @@ type ExamScoreProps = {
 };
 
 export default function ExamScore({ payload, setShow }: ExamScoreProps) {
-  console.log(payload.correct);
 
   return (
     <>
       {/* Title */}
       <h1>Your Score</h1>
+
       {/* Score */}
       <div className="flex justify-center items-center gap-7">
         <span className="size-20 flex items-center justify-center rounded-full font-bold text-2xl  border-4 border-red-600">
@@ -46,7 +46,7 @@ export default function ExamScore({ payload, setShow }: ExamScoreProps) {
         </Button>
         <Button
           onClick={() => {
-            setShow("result".toLowerCase());
+            setShow("result");
           }}
           type="button"
           className="bg-hiro rounded-2xl"

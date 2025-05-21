@@ -11,7 +11,7 @@ const authPages = [
   "/auth/set-password",
   "/auth/verify-code",
 ];
-const publicPages = [...Array.from(authPages)];
+const publicPages = [...authPages];
 
 const handleI18nRouting = createMiddleware(routing);
 
@@ -48,14 +48,9 @@ export default async function middleware(req: NextRequest) {
 
   if (isPublicPage) {
     const token = await getToken({ req });
-    console.log("MIDDLEWARE TOKEN:", token);
-    const authPathnameRegex = localesRegex(authPages);
-    const isAuthPage = authPathnameRegex.test(req.nextUrl.pathname);
+    const redirectURL = new URL('/dashboard', req.nextUrl.origin);
 
-    if (token && isAuthPage) {
-      const redirectUrl = new URL("/", req.nextUrl.origin);
-      return NextResponse.redirect(redirectUrl);
-    }
+    if (token) return NextResponse.redirect(redirectURL);
 
     return handleI18nRouting(req);
   } else {

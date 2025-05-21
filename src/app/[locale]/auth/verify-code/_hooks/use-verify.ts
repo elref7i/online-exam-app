@@ -1,4 +1,4 @@
-import { VerifyFields } from "@/lib/schemes/auth.schemes";
+import { VerifyFields } from "@/lib/schemes/auth.schema";
 import { useMutation } from "@tanstack/react-query";
 import { verifyAction } from "../_actions/verify-code.action";
 import { useRouter } from "@/i18n/navigation";

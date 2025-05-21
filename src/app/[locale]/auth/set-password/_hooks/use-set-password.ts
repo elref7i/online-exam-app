@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import { SetPassswordFields } from "@/lib/schemes/auth.schemes";
+import { SetPassswordFields } from "@/lib/schemes/auth.schema";
 import { useRouter } from "@/i18n/navigation";
 import { toast } from "sonner";
 import { setPasswordAction } from "../_actions/set-password.action";

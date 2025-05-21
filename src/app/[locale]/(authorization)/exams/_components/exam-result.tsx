@@ -5,9 +5,7 @@ type ExamResultProps = {
   questions: Question[];
   payload: CheckResponse;
 };
-export default function ExamResult({ questions, payload }: ExamResultProps) {
-  console.log("questions", questions);
-  console.log("payload", payload);
+export default function ExamResult({ questions }: ExamResultProps) {
 
   return (
     <div className="question grid grid-cols-12 gap-5 overflow-auto ">

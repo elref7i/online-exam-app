@@ -35,8 +35,6 @@ export default function SelectLanguage() {
   const pathName = usePathname();
   const searchParams = useSearchParams();
 
-  console.log(typeof myLocale);
-
   const language: Record<Locale, string> = {
     en: t("english"),
     ar: t("arabic"),
@@ -47,7 +45,6 @@ export default function SelectLanguage() {
     router.push(`${pathName}?${searchParams.toString()}`, {
       locale,
     });
-    console.log(locale);
   };
   return (
     <Select onValueChange={toggleLocale}>

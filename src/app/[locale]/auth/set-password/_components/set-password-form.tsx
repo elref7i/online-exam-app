@@ -5,7 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import {
   SetPassswordFields,
   setPassworsSchema,
-} from "@/lib/schemes/auth.schemes";
+} from "@/lib/schemes/auth.schema";
 import {
   Form,
   FormControl,

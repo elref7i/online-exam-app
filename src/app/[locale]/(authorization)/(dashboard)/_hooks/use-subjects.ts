@@ -8,9 +8,11 @@ export default function useSubjects() {
   } = useQuery({
     queryKey: ["subjects"],
     queryFn: async () => {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API!}/subjects`);
+      const response = await fetch(`http://localhost:3000/api/subjects`);
+
       const payload: APIResponse<Subjects> = await response.json();
       if ("code" in payload) throw new Error(payload.message);
+
       return payload;
     },
   });

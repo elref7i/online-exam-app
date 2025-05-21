@@ -8,6 +8,7 @@ type TimerExamProps = {
   onTimerEnd?: () => void;
   onTimeChange?: (date: Date) => void;
 };
+
 export default function TimerExam({
   duration,
   onTimerEnd,
@@ -16,28 +17,28 @@ export default function TimerExam({
   //Stats
   const [date, setData] = useState(new Date(0).setMinutes(duration));
 
-  //Effects
+  // Effects
   useEffect(() => {
     // Set Interval
     const timerId = setInterval(() => {
-      //Change State
+      // Change State
       setData((prev) => {
-        //Date now in State
+        // Date now in State
         const currentDate = new Date(prev);
 
-        //Check seconds and mintutes
+        // Check seconds and mintutes
         if (currentDate.getMinutes() === 0 && currentDate.getSeconds() === 0) {
-          //Call void
+          // Call void
           onTimerEnd?.();
 
-          //Clear interval
+          // Clear interval
           window.clearInterval(timerId);
 
-          //Now date
+          // Now date
           return Date.now();
         }
 
-        //Invoke time Handler on each iteration
+        // Invoke time Handler on each iteration
         onTimeChange?.(currentDate);
 
         // Set second snd substract one second .
@@ -45,7 +46,7 @@ export default function TimerExam({
       });
     }, 1000);
 
-    //End Interval
+    // End Interval
     return () => {
       window.clearInterval(timerId);
     };

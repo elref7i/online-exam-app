@@ -1,6 +1,6 @@
 import { NextAuthOptions } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
-import { JSON_HEADER } from "./lib/constants/api.constants";
+import { JSON_HEADER } from "./lib/constants/api.constant";
 export const authOptions: NextAuthOptions = {
   pages: {
     signIn: "/auth/login",
@@ -30,8 +30,6 @@ export const authOptions: NextAuthOptions = {
           },
         });
         const payload: APIResponse<LoginResponse> = await response.json();
-
-        console.log(payload);
 
         if ("code" in payload) {
           throw new Error(payload.message);
@@ -70,15 +68,4 @@ export const authOptions: NextAuthOptions = {
     // signin => اثناء
   },
 
-  cookies: {
-    sessionToken: {
-      name: `__Secure-next-auth.session-token`,
-      options: {
-        httpOnly: true,
-        sameSite: "none",
-        path: "/",
-        secure: true, // لازم تكون true علشان Vercel HTTPS
-      },
-    },
-  },
 };

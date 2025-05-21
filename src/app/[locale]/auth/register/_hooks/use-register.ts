@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import { registerAction } from "../_actions/register.action";
-import { RegisterFields } from "@/lib/schemes/auth.schemes";
+import { RegisterFields } from "@/lib/schemes/auth.schema";
 import { useRouter } from "@/i18n/navigation";
 import { toast } from "sonner";
 

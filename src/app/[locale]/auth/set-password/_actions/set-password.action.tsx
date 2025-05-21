@@ -1,7 +1,7 @@
 "use server";
 
-import { JSON_HEADER } from "@/lib/constants/api.constants";
-import { SetPassswordFields } from "@/lib/schemes/auth.schemes";
+import { JSON_HEADER } from "@/lib/constants/api.constant";
+import { SetPassswordFields } from "@/lib/schemes/auth.schema";
 
 export const setPasswordAction = async (
   SetPassswordFields: SetPassswordFields
@@ -15,8 +15,6 @@ export const setPasswordAction = async (
   });
 
   const payload: APIResponse<SetPasswordResponse> = await response.json();
-  console.log(process.env.API!);
-  console.log(payload);
 
   if ("code" in payload) {
     const errorMessage =

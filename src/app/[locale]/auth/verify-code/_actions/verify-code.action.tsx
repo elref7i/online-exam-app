@@ -1,7 +1,7 @@
 "use server";
 
-import { JSON_HEADER } from "@/lib/constants/api.constants";
-import { VerifyFields } from "@/lib/schemes/auth.schemes";
+import { JSON_HEADER } from "@/lib/constants/api.constant";
+import { VerifyFields } from "@/lib/schemes/auth.schema";
 
 export const verifyAction = async (VerifyFields: VerifyFields) => {
   const response = await fetch(`${process.env.API}/auth/verifyResetCode`, {
