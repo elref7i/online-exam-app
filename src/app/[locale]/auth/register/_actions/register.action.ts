@@ -1,7 +1,7 @@
 "use server";
 
-import { JSON_HEADER } from "@/lib/constants/api.constants";
-import { RegisterFields } from "@/lib/schemes/auth.schemes";
+import { JSON_HEADER } from "@/lib/constants/api.constant";
+import { RegisterFields } from "@/lib/schemes/auth.schema";
 
 export const registerAction = async (RegisterFields: RegisterFields) => {
   const response = await fetch(`${process.env.API!}/auth/signup`, {
@@ -12,7 +12,6 @@ export const registerAction = async (RegisterFields: RegisterFields) => {
     },
   });
   const payload: APIResponse<RegisterResponse> = await response.json();
-  console.log(payload);
 
   if ("code" in payload) {
     const errorMessage =

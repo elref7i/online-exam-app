@@ -7,7 +7,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { AnswerFields, AnswerSchema } from "@/lib/schemes/exam.schemes";
+import { AnswerFields, AnswerSchema } from "@/lib/schemes/exam.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -26,7 +26,7 @@ export default function QuestionsForm({ questions }: QuestionsFomrProps) {
   //States
   const [step, setStep] = useState(0);
   const [answer, setAnswer] = useState("");
-  const [show, setShow] = useState("answer".toLowerCase());
+  const [show, setShow] = useState("answer");
 
   //Mutation
   const { isPending, checkQuestions, payload } = useCheckQuestions();
@@ -43,13 +43,13 @@ export default function QuestionsForm({ questions }: QuestionsFomrProps) {
   // Functions
   const onSubmit: SubmitHandler<AnswerFields> = async (values) => {
     await checkQuestions(values);
-    setShow("score".toLowerCase());
+    setShow("score");
   };
 
   return (
     <>
       {/* Exam */}
-      {show === "answer".toLowerCase() && (
+      {show === "answer" && (
         <>
           {/* Header */}
           <header className="text-sm flex justify-between items-center mt-5 mb-0">

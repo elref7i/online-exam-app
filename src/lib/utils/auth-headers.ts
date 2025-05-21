@@ -10,7 +10,9 @@ export async function getAuthHeaders() {
   const tokenCookie =
     cookies().get(AUTH_COOKIE)?.value ||
     cookies().get(AUTH_COOKIE_VERCEL)?.value;
+
   let JWT: JWT | null = null;
+
   try {
     JWT = await decode({
       token: tokenCookie,

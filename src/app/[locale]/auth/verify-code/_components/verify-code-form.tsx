@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 import ContinueWith from "@/components/features/continue/continue-with";
-import { verifySchema, VerifyFields } from "@/lib/schemes/auth.schemes";
+import { verifySchema, VerifyFields } from "@/lib/schemes/auth.schema";
 import { useTranslations } from "next-intl";
 import useVerify from "../_hooks/use-verify";
 

@@ -13,6 +13,7 @@ export default function SubjectsList() {
 
   if (isLoading) return <p>Loading</p>;
   if (error) return <p>{error.message}</p>;
+
   return (
     <>
       {payload?.subjects.map((subject: Subject) => (

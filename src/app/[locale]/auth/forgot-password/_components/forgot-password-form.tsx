@@ -15,7 +15,7 @@ import ContinueWith from "@/components/features/continue/continue-with";
 import {
   ForgotPasswordFields,
   forgotPasswordSchema,
-} from "@/lib/schemes/auth.schemes";
+} from "@/lib/schemes/auth.schema";
 import { useTranslations } from "next-intl";
 import useForgotPassword from "../_hooks/use-fotgot-passeord";
 

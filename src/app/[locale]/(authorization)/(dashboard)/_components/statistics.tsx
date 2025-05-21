@@ -4,6 +4,7 @@ import person from "../../../../../../public/assets/images/Frame 40.png";
 import Image from "next/image";
 import { authOptions } from "@/auth";
 import { getServerSession } from "next-auth";
+
 export default async function Statistics() {
   const session = await getServerSession(authOptions);
 

@@ -1,4 +1,4 @@
-import { JSON_HEADER } from "@/lib/constants/api.constants";
+import { JSON_HEADER } from "@/lib/constants/api.constant";
 import { getToken } from "next-auth/jwt";
 import { NextRequest, NextResponse } from "next/server";
 

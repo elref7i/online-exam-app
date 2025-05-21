@@ -4,8 +4,10 @@ type ExamsProps = {
   dataInfo: Exam;
   searchParams: SearchParams;
 };
+
 export default function ExamComponent({ dataInfo, searchParams }: ExamsProps) {
   const { duration, title, numberOfQuestions, _id: id } = dataInfo;
+
   return (
     <div className="flex  justify-between items-center shadow-md p-4 rounded-md">
       {/* About exam */}

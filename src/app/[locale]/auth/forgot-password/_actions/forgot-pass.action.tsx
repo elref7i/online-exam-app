@@ -1,7 +1,7 @@
 "use server";
 
-import { JSON_HEADER } from "@/lib/constants/api.constants";
-import { ForgotPasswordFields } from "@/lib/schemes/auth.schemes";
+import { JSON_HEADER } from "@/lib/constants/api.constant";
+import { ForgotPasswordFields } from "@/lib/schemes/auth.schema";
 
 export const forgotPasswordAction = async (
   ForgotPasswordFields: ForgotPasswordFields
@@ -15,7 +15,6 @@ export const forgotPasswordAction = async (
   });
 
   const payload: APIResponse<ForgotPasswordResponse> = await response.json();
-  console.log(payload);
 
   if ("code" in payload) throw new Error(payload.message);
 

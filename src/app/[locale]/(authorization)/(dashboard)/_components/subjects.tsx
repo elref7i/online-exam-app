@@ -7,7 +7,7 @@ export default function Subjects() {
       {/* Header */}
       <header className="font-[500] text-2xl text-hiro flex justify-between items-center mb-6">
         {/* Title */}
-        <h2>Qizes</h2>
+        <h2>Quizes</h2>
 
         {/* View all */}
         <h3 className="cursor-pointer">View All</h3>

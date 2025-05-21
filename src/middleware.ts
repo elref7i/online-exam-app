@@ -3,7 +3,6 @@ import createMiddleware from "next-intl/middleware";
 import { NextRequest, NextResponse } from "next/server";
 import { routing } from "./i18n/routing";
 import { getToken } from "next-auth/jwt";
-
 const authPages = [
   "/auth/login",
   "/auth/register",
@@ -31,7 +30,6 @@ const authMiddleware = withAuth(
     },
   }
 );
-
 // Function
 function localesRegex(routes: string[]) {
   return RegExp(
@@ -41,7 +39,6 @@ function localesRegex(routes: string[]) {
     "i"
   );
 }
-
 export default async function middleware(req: NextRequest) {
   const publicPathnameRegex = localesRegex(publicPages);
   const isPublicPage = publicPathnameRegex.test(req.nextUrl.pathname);
@@ -63,7 +60,6 @@ export default async function middleware(req: NextRequest) {
     return (authMiddleware as any)(req);
   }
 }
-
 export const config = {
   matcher: [
     "/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)",
