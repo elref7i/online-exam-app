@@ -3,7 +3,6 @@ import createMiddleware from "next-intl/middleware";
 import { NextRequest, NextResponse } from "next/server";
 import { routing } from "./i18n/routing";
 import { getToken } from "next-auth/jwt";
-
 const authPages = [
   "/auth/login",
   "/auth/register",
@@ -11,7 +10,7 @@ const authPages = [
   "/auth/set-password",
   "/auth/verify-code",
 ];
-const publicPages = [...authPages];
+const publicPages = [...Array.from(authPages)];
 
 const handleI18nRouting = createMiddleware(routing);
 
@@ -31,7 +30,6 @@ const authMiddleware = withAuth(
     },
   }
 );
-
 // Function
 function localesRegex(routes: string[]) {
   return RegExp(
@@ -41,16 +39,20 @@ function localesRegex(routes: string[]) {
     "i"
   );
 }
-
 export default async function middleware(req: NextRequest) {
   const publicPathnameRegex = localesRegex(publicPages);
   const isPublicPage = publicPathnameRegex.test(req.nextUrl.pathname);
 
   if (isPublicPage) {
     const token = await getToken({ req });
-    const redirectURL = new URL('/dashboard', req.nextUrl.origin);
+    console.log("MIDDLEWARE TOKEN:", token);
+    const authPathnameRegex = localesRegex(authPages);
+    const isAuthPage = authPathnameRegex.test(req.nextUrl.pathname);
 
-    if (token) return NextResponse.redirect(redirectURL);
+    if (token && isAuthPage) {
+      const redirectUrl = new URL("/", req.nextUrl.origin);
+      return NextResponse.redirect(redirectUrl);
+    }
 
     return handleI18nRouting(req);
   } else {
@@ -58,7 +60,6 @@ export default async function middleware(req: NextRequest) {
     return (authMiddleware as any)(req);
   }
 }
-
 export const config = {
   matcher: [
     "/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)",
